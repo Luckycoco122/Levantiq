@@ -93,50 +93,50 @@
 
           <div class="contact-grid">
             <!-- Form -->
-            <form id="contact-form" class="contact-form card" novalidate>
-              <!-- Endpoint de la función serverless -->
-              <input type="hidden" name="_endpoint" value="/api/contact">
-              <!-- honeypot -->
-              <input type="text" name="_hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
+                <form id="contact-form" class="contact-form card" novalidate>
+                <!-- Endpoint de la función serverless -->
+                <input type="hidden" name="_endpoint" value="/api/contact">
+                <!-- honeypot -->
+                <input type="text" name="_hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-              <div class="form-field">
-                <label for="name">Nombre*</label>
-                <input id="name" name="name" required placeholder="Tu nombre">
-                <span class="form-help">Este campo es obligatorio.</span>
-              </div>
+                <div class="form-field">
+                    <label for="name">Nombre*</label>
+                    <input id="name" name="name" required placeholder="Tu nombre">
+                    <span class="form-help">Este campo es obligatorio.</span>
+                </div>
 
-              <div class="form-field">
-                <label for="email">Email*</label>
-                <input id="email" name="email" type="email" required placeholder="tucorreo@empresa.com">
-                <span class="form-help">Introduce un email válido.</span>
-              </div>
+                <div class="form-field">
+                    <label for="email">Email*</label>
+                    <input id="email" name="email" type="email" required placeholder="tucorreo@empresa.com">
+                    <span class="form-help">Introduce un email válido.</span>
+                </div>
 
-              <div class="form-field">
-                <label for="phone">Teléfono</label>
-                <input id="phone" name="phone" type="tel" placeholder="+34 600 000 000">
-              </div>
+                <div class="form-field">
+                    <label for="phone">Teléfono</label>
+                    <input id="phone" name="phone" type="tel" placeholder="+34 600 000 000">
+                </div>
 
-              <div class="form-field">
-                <label for="company">Empresa</label>
-                <input id="company" name="company" placeholder="Nombre de empresa">
-              </div>
+                <div class="form-field">
+                    <label for="company">Empresa</label>
+                    <input id="company" name="company" placeholder="Nombre de empresa">
+                </div>
 
-              <div class="form-field">
-                <label for="message">Mensaje*</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos brevemente tu necesidad"></textarea>
-                <span class="form-help">Describe brevemente qué necesitas.</span>
-              </div>
+                <div class="form-field">
+                    <label for="message">Mensaje*</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos brevemente tu necesidad"></textarea>
+                    <span class="form-help">Describe brevemente qué necesitas.</span>
+                </div>
 
-              <label class="checkline">
-                <input id="rgpd" type="checkbox" required>
-                <span>Acepto la <a href="privacidad.html">Política de privacidad</a>.</span>
-              </label>
+                <label class="checkline">
+                    <input id="rgpd" type="checkbox" required>
+                    <span>Acepto la <a href="privacidad.html">Política de privacidad</a>.</span>
+                </label>
 
-              <div class="form-actions">
-                <button class="btn" type="submit" id="sendBtn" disabled>Enviar</button>
-                <p id="contact-feedback" class="text" style="display:none;"></p>
-              </div>
-            </form>
+                <div class="form-actions">
+                    <button class="btn" type="submit" id="sendBtn" disabled>Enviar</button>
+                    <p id="contact-feedback" class="text" style="display:none;"></p>
+                </div>
+                </form>
 
             <!-- Aside -->
             <aside class="contact-aside card">
