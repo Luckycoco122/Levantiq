@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — Levantiq</title>
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Google Fonts (como en index) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD básico -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ContactPage",
+    "name":"Contacto — Levantiq",
+    "url":"https://www.ejemplo.com/contacto.html",
+    "about":{
+      "@type":"Organization",
+      "name":"Levantiq",
+      "address":{"@type":"PostalAddress","addressLocality":"Madrid","addressCountry":"ES"}
+    }
+  }
+  </script>
+</head>
+<body id="top">
+
+  <!-- HEADER -->
+  <header class="header" data-header>
+    <div class="container">
+      <div class="overlay" data-overlay></div>
+
+      <a href="index.html"><h1 class="logo">Levantiq</h1></a>
+
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="index.html" class="logo">Levantiq</a>
+          <button class="nav-close-btn" aria-label="Cerrar menú" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="index.html#home" class="navbar-link" data-navbar-link>Inicio</a></li>
+          <li class="navbar-item"><a href="index.html#about" class="navbar-link" data-navbar-link>Sobre nosotros</a></li>
+          <li class="navbar-item"><a href="index.html#services" class="navbar-link" data-navbar-link>Servicios</a></li>
+          <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
+          <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
+          <li class="navbar-item"><a href="contacto.html" class="navbar-link" data-navbar-link>Contáctanos</a></li>
+        </ul>
+      </nav>
+
+      <a href="#form" class="btn">
+        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+        <span>Contáctanos</span>
+      </a>
+
+      <button class="nav-open-btn" aria-label="Abrir menú" data-nav-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- HERO -->
+      <section class="hero contact-hero">
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-subtitle">Estamos aquí para ayudarte</p>
+            <h2 class="h2 hero-title">Hablemos de tu proyecto</h2>
+            <p class="hero-text">Cuéntanos qué necesitas y te responderemos muy pronto.</p>
+            <a href="#form" class="btn">Escribir mensaje</a>
+          </div>
+
+          <figure class="hero-banner">
+            <img src="./assets/images/hero-banner.png" width="694" height="529" loading="lazy" alt="Contacto Levantiq" class="w-100 banner-animation">
+          </figure>
+        </div>
+      </section>
+
+      <!-- FORMULARIO -->
+      <section class="section" id="form">
+        <div class="container">
+          <h2 class="h2 section-title">Formulario de contacto</h2>
+
+          <div class="contact-grid">
+            <!-- Form -->
+            <form id="contact-form" class="contact-form card" novalidate>
+              <!-- Endpoint de la función serverless -->
+              <input type="hidden" name="_endpoint" value="/api/contact">
+              <!-- honeypot -->
+              <input type="text" name="_hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
+
+              <div class="form-field">
+                <label for="name">Nombre*</label>
+                <input id="name" name="name" required placeholder="Tu nombre">
+                <span class="form-help">Este campo es obligatorio.</span>
+              </div>
+
+              <div class="form-field">
+                <label for="email">Email*</label>
+                <input id="email" name="email" type="email" required placeholder="tucorreo@empresa.com">
+                <span class="form-help">Introduce un email válido.</span>
+              </div>
+
+              <div class="form-field">
+                <label for="phone">Teléfono</label>
+                <input id="phone" name="phone" type="tel" placeholder="+34 600 000 000">
+              </div>
+
+              <div class="form-field">
+                <label for="company">Empresa</label>
+                <input id="company" name="company" placeholder="Nombre de empresa">
+              </div>
+
+              <div class="form-field">
+                <label for="message">Mensaje*</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos brevemente tu necesidad"></textarea>
+                <span class="form-help">Describe brevemente qué necesitas.</span>
+              </div>
+
+              <label class="checkline">
+                <input id="rgpd" type="checkbox" required>
+                <span>Acepto la <a href="privacidad.html">Política de privacidad</a>.</span>
+              </label>
+
+              <div class="form-actions">
+                <button class="btn" type="submit" id="sendBtn" disabled>Enviar</button>
+                <p id="contact-feedback" class="text" style="display:none;"></p>
+              </div>
+            </form>
+
+            <!-- Aside -->
+            <aside class="contact-aside card">
+              <h3 class="h3">Otros canales</h3>
+              <p class="text"><strong>Email:</strong> <a href="mailto:hola@levantiq.com">hola@levantiq.com</a></p>
+              <p class="text"><strong>Teléfono:</strong> <a href="tel:+34600000000">+34 600 000 000</a></p>
+              <p class="text"><strong>Ubicación:</strong> Madrid, España</p>
+              <a class="btn" href="#" aria-label="Escribir por WhatsApp">Escribir por WhatsApp</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Levantiq</a>
+          <p class="text">Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.</p>
+          <ul class="social-list">
+            <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          </ul>
+        </div>
+
+        <ul class="footer-list">
+          <li><p class="footer-list-title">Enlaces</p></li>
+          <li><a href="index.html#home" class="footer-link">Inicio</a></li>
+          <li><a href="index.html#about" class="footer-link">Sobre nosotros</a></li>
+          <li><a href="index.html#services" class="footer-link">Servicios</a></li>
+          <li><a href="index.html#blog" class="footer-link">Blog</a></li>
+          <li><a href="contacto.html" class="footer-link">Contáctanos</a></li>
+        </ul>
+
+        <ul class="footer-list">
+          <li><p class="footer-list-title">Servicios</p></li>
+          <li><a href="index.html#services" class="footer-link">Estrategia & Analítica</a></li>
+          <li><a href="index.html#services" class="footer-link">Desarrollo Web</a></li>
+          <li><a href="index.html#services" class="footer-link">Integraciones & Automatización</a></li>
+          <li><a href="index.html#features" class="footer-link">Cómo lo hacemos</a></li>
+        </ul>
+
+        <ul class="footer-list">
+          <li><p class="footer-list-title">Contacto</p></li>
+          <li class="footer-item">
+            <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
+            <div><a href="tel:+34600000000" class="footer-item-link">+34 600 000 000</a></div>
+          </li>
+          <li class="footer-item">
+            <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
+            <div><a href="mailto:hola@levantiq.com" class="footer-item-link">hola@levantiq.com</a></div>
+          </li>
+          <li class="footer-item">
+            <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
+            <address class="footer-item-link">Madrid, España</address>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 <a href="index.html" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- GO TO TOP -->
+  <a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+  <!-- JS -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Envío AJAX + validación + RGPD (si no usas el script unificado) -->
+  <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      const fb = document.getElementById('contact-feedback');
+      const rgpd = document.getElementById('rgpd');
+      const sendBtn = document.getElementById('sendBtn');
+
+      function toggleBtn(){ if(sendBtn) sendBtn.disabled = !rgpd.checked; }
+      rgpd?.addEventListener('change', toggleBtn); toggleBtn();
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        form.classList.add('was-validated');
+        fb.style.display='none'; fb.className='';
+
+        if (!form.checkValidity()) {
+          fb.textContent = 'Revisa los campos marcados en rojo.';
+          fb.classList.add('error'); fb.style.display='block';
+          return;
+        }
+
+        const data = new FormData(form);
+        if (data.get('_hp')) return; // honeypot
+        const endpoint = data.get('_endpoint');
+
+        const payload = {
+          name: (data.get('name')||'').toString().trim(),
+          email: (data.get('email')||'').toString().trim(),
+          phone: (data.get('phone')||'').toString().trim(),
+          company: (data.get('company')||'').toString().trim(),
+          message: (data.get('message')||'').toString().trim(),
+          source: 'levantiq-contacto'
+        };
+
+        try {
+          const res = await fetch(endpoint, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(payload)
+          });
+          if(!res.ok) throw 0;
+
+          fb.textContent = '¡Gracias! Hemos recibido tu mensaje.';
+          fb.classList.add('success'); fb.style.display='block';
+          form.reset(); toggleBtn();
+
+          if (typeof gtag === 'function') { gtag('event','lead_submit',{form:'contacto_page'}); }
+        } catch {
+          fb.textContent = 'Hubo un problema al enviar. Inténtalo de nuevo.';
+          fb.classList.add('error'); fb.style.display='block';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
