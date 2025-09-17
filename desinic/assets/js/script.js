@@ -53,6 +53,18 @@
   const sendBtn = qs('#sendBtn');
   const fb      = qs('#contact-feedback');
 
+  // --- NUEVO: detectar ?service= de la URL y pre-rellenar campos ---
+  const serviceFromQuery = new URLSearchParams(location.search).get('service') || '';
+  const serviceField = qs('#serviceField'); // hidden opcional
+  const messageEl = qs('#message');
+
+  if (serviceField && !serviceField.value) serviceField.value = serviceFromQuery;
+
+  // Prefijo suave en el mensaje si hay service en la URL y el textarea está vacío
+  if (serviceFromQuery && messageEl && !messageEl.value.trim()) {
+    messageEl.value = `[Interés: ${serviceFromQuery}] `;
+  }
+
   // habilitar/deshabilitar botón por RGPD
   const toggleBtn = () => { if (sendBtn && rgpd) sendBtn.disabled = !rgpd.checked; };
   rgpd?.addEventListener('change', toggleBtn); toggleBtn();
@@ -78,13 +90,20 @@
     if (data.get('_hp')) return; // honeypot
 
     const endpoint = data.get('_endpoint');
+
+    // servicio: prioriza el hidden 'service' si existe; si no, usa la query
+    const serviceValue =
+      (data.get('service') && data.get('service').toString().trim()) ||
+      serviceFromQuery;
+
     const payload = {
       name:    (data.get('name')    || '').toString().trim(),
       email:   (data.get('email')   || '').toString().trim(),
       phone:   (data.get('phone')   || '').toString().trim(),
       company: (data.get('company') || '').toString().trim(),
       message: (data.get('message') || '').toString().trim(),
-      source:  'levantiq-web'
+      service: serviceValue || '',  // <-- NUEVO en payload
+      source:  'levantiq-contacto'  // etiqueta fuente de este formulario
     };
 
     try {
@@ -101,9 +120,15 @@
       }
       form.reset(); toggleBtn();
 
+      // si añadiste autofill del mensaje, vuelve a dejar el prefijo si hay ?service
+      if (serviceFromQuery && messageEl) {
+        messageEl.value = `[Interés: ${serviceFromQuery}] `;
+      }
+      if (serviceField) serviceField.value = serviceFromQuery;
+
       // Evento opcional a GA4 si existe gtag()
       if (typeof gtag === 'function') {
-        gtag('event', 'lead_submit', { form: form.id || 'contacto' });
+        gtag('event', 'lead_submit', { form: form.id || 'contacto', service: serviceValue || '(none)' });
       }
     } catch {
       if (fb) {
@@ -144,3 +169,148 @@
     .forEach(a => a.addEventListener('click', () => closeAll()));
 })();
 
+/* ===== Carrusel IA: movimiento continuo ===== */
+(function () {
+  const root = document.querySelector('#ia-carousel');
+  if (!root) return;
+
+  const track   = root.querySelector('.carousel-track');
+  const slides  = [...root.querySelectorAll('.carousel-slide')];
+  const prevBtn = root.querySelector('.carousel-btn.prev');
+  const nextBtn = root.querySelector('.carousel-btn.next');
+
+  // --- Clonado para bucle infinito ---
+  function cloneUntilWideEnough() {
+    const visible = track.clientWidth;
+    const hasClones = track.dataset.cloned === '1';
+    if (hasClones) return;
+
+    let currentWidth = track.scrollWidth;
+    while (currentWidth < visible * 2 + 200) {
+      slides.forEach(s => {
+        const c = s.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        track.appendChild(c);
+      });
+      currentWidth = track.scrollWidth;
+    }
+    track.dataset.cloned = '1';
+  }
+
+  // --- Motor de scroll continuo ---
+  let speed = 0.6; // píxeles por frame (≈36px/s a 60fps)
+  let rafId = null;
+  let paused = false;
+  let loopWidth = 0;
+
+  function computeLoopWidth() {
+    let w = 0;
+    for (let i = 0; i < slides.length; i++) {
+      w += slides[i].getBoundingClientRect().width;
+    }
+    const GAP = 24;
+    w += GAP * (slides.length - 1);
+    loopWidth = Math.round(w);
+  }
+
+  function tick() {
+    if (!paused) {
+      track.scrollLeft += speed;
+      if (track.scrollLeft >= loopWidth) {
+        track.scrollLeft -= loopWidth;
+      }
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function start() { if (!rafId) rafId = requestAnimationFrame(tick); }
+  function stop()  { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+
+  // Controles manuales
+  function jump(delta) {
+    paused = true;
+    track.scrollLeft += delta;
+    if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
+    if (track.scrollLeft < 0) track.scrollLeft += loopWidth;
+    setTimeout(() => { paused = false; }, 200);
+  }
+
+  prevBtn?.addEventListener('click', () => jump(-track.clientWidth * 0.9));
+  nextBtn?.addEventListener('click', () => jump( track.clientWidth * 0.9));
+
+  root.addEventListener('mouseenter', () => paused = true);
+  root.addEventListener('mouseleave', () => paused = false);
+  root.addEventListener('pointerdown', () => paused = true);
+  root.addEventListener('pointerup',   () => paused = false);
+  root.addEventListener('focusin',     () => paused = true);
+  root.addEventListener('focusout',    () => paused = false);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      stop();
+      track.scrollLeft = 0;
+      computeLoopWidth();
+      start();
+    }, 150);
+  }, { passive: true });
+
+  // Init
+  cloneUntilWideEnough();
+  computeLoopWidth();
+  start();
+
+  // window.__iaCarouselSpeed = (v)=>{ speed = v; };
+})();
+
+/* ===== Contadores "Qué cambia con IA" ===== */
+(function () {
+  const counters = document.querySelectorAll('.counter');
+  if (!counters.length) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function animateCounter(el, to, { prefix = '', suffix = '', duration = 1200 } = {}) {
+    if (reduceMotion) {
+      el.textContent = `${prefix}${to}${suffix}`;
+      return;
+    }
+
+    const start = 0;
+    const startTime = performance.now();
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function frame(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const eased = easeOutCubic(progress);
+      const current = Math.round(start + (to - start) * eased);
+      el.textContent = `${prefix}${current}${suffix}`;
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Observa cuando la sección entra en viewport
+  const section = document.querySelector('#about-ia') || document;
+  const once = { triggered: false };
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !once.triggered) {
+        once.triggered = true;
+        counters.forEach(el => {
+          const to = parseInt(el.getAttribute('data-target'), 10) || 0;
+          const prefix = el.getAttribute('data-prefix') || '';
+          const suffix = el.getAttribute('data-suffix') || '';
+          animateCounter(el, to, { prefix, suffix, duration: 1300 });
+        });
+        io.disconnect();
+      }
+    });
+  }, { root: null, threshold: 0.35 });
+
+  io.observe(section);
+})();

@@ -5,16 +5,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IA — Levantiq</title>
+
+  <!-- favicon -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+
+  <!-- css -->
   <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap"
+    rel="stylesheet">
 </head>
 <body id="top">
 
-  <!-- Header -->
-  <!-- #HEADER -->
+<!-- #HEADER -->
 <header class="header" data-header>
   <div class="container">
 
@@ -56,15 +63,12 @@
         <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
         <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
 
-        <!-- Contacto → página aparte -->
-        <li class="navbar-item"><a href="contacto.html" class="navbar-link" data-navbar-link>Contáctanos</a></li>
-      </ul>
+        </ul>
 
     </nav>
 
-    <!-- Botón principal → página de contacto -->
-    <a href="contacto.html" class="btn">
-      <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+    <!-- Botón header → va a la agenda en la página de contacto -->
+    <a href="contacto.html#agenda" class="btn-cta">
       <span>Contáctanos</span>
     </a>
 
@@ -75,141 +79,365 @@
   </div>
 </header>
 
-  <main>
-    <article>
+<main>
+  <article>
 
-      <!-- Hero -->
-      <section class="hero" style="padding-block-start:140px">
-        <div class="container">
-          <div class="hero-content">
-            <p class="hero-subtitle">Servicios</p>
-            <h1 class="h2 hero-title">IA</h1>
-            <p class="hero-text">Automatizamos tareas, sincronizamos datos y atendemos 24/7 con asistentes inteligentes.</p>
-            <a class="btn" href="contacto.html?service=ia-automatizacion">Pedir propuesta</a>
-          </div>
-          <figure class="hero-banner">
-            <img class="w-100 banner-animation" src="./assets/images/hero-banner.png" width="694" height="529" alt="IA y automatización">
-          </figure>
+    <!-- HERO -->
+    <section class="hero" style="padding-block-start:140px">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-subtitle">Servicios</p>
+          <h1 class="h2 hero-title">Automatizaciones con IA</h1>
+          <p class="hero-text">
+            Lleva a tu negocio del “lo hacemos a mano” al “se hace solo”. Conectamos tus canales, diseñamos asistentes
+            que atienden 24/7 y automatizamos tareas para que tu equipo se enfoque en lo importante.
+          </p>
+          <a class="btn" href="contacto.html?service=ia-automatizacion">
+            <span>Quiero ver una demo</span>
+          </a>
         </div>
-      </section>
 
-      <!-- Subservicios -->
-      <section class="section">
-        <div class="container">
-          <h2 class="h2 section-title underline">Qué hacemos</h2>
+        <figure class="hero-banner">
+          <!-- EDITA RUTA SI ES NECESARIO -->
+          <img
+            class="w-100 banner-animation"
+            src="./assets/images/ChatGPT%20Image%2017%20sept%202025,%2012_19_46-IA-Robot-Mujer.png"
+            width="694" height="529" loading="lazy" alt="Asistente de IA atendiendo clientes">
+        </figure>
+      </div>
+    </section>
 
-          <div class="subgrid">
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="chatbubbles-outline"></ion-icon> Chatbots y asistentes</h4>
-              <p class="subtext">FAQ, captación de leads y derivación a agente en Web/WhatsApp/Facebook.</p>
-              <a class="cta-link" href="contacto.html?service=chatbots">Desde 699€ <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="repeat-outline"></ion-icon> Automatización de procesos</h4>
-              <p class="subtext">Conectamos tus apps para que formularios, pedidos y comunicaciones funcionen solos.</p>
-              <a class="cta-link" href="contacto.html?service=automatizacion">Desde 299€ <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="mail-unread-outline"></ion-icon> Marketing automation</h4>
-              <p class="subtext">Leads, emails y reglas ligeras de cualificación para aumentar conversiones.</p>
-              <a class="cta-link" href="contacto.html?service=marketing-automation">Pide presupuesto <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="briefcase-outline"></ion-icon> Flujos empresariales</h4>
-              <p class="subtext">Tareas y proyectos, recordatorios de pago y conciliación simplificada.</p>
-              <a class="cta-link" href="contacto.html?service=flujos-empresariales">Pide presupuesto <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </article>
-  </main>
-
-  <!-- Footer -->
-  <!-- #FOOTER -->
-  <footer class="footer">
-
-    <div class="footer-top section">
+    <!-- BENEFICIOS RÁPIDOS -->
+    <section class="section about" id="about-ia">
       <div class="container">
 
-        <div class="footer-brand">
-          <a href="#" class="logo">Levantiq</a>
-          <p class="text">
-            Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        <figure class="about-banner">
+          <!-- EDITA RUTA SI ES NECESARIO -->
+          <img
+            src="./assets/images/ChatGPT Image 17 sept 2025, 12_20_48.-IA-MujerFotoPrincipal.png"
+            width="700" height="532" loading="lazy" alt="Automatización de tareas"
+            class="w-100 banner-animation">
+        </figure>
+
+        <div class="about-content">
+          <h2 class="h2 section-title underline">Qué cambia con IA</h2>
+          <p class="about-text">
+            Menos esperas, menos errores y menos trabajo repetitivo. Más velocidad, más control y mejor experiencia
+            para tus clientes.
           </p>
 
-          <ul class="social-list">
-            <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
-          </ul>
+          <ul class="stats-list">
+            <li class="stats-card">
+                <p class="h3 stats-title">
+                <span class="counter" data-target="24" data-suffix="/7">0</span>
+                </p>
+                <p class="stats-text">Atención continua</p>
+            </li>
+
+            <li class="stats-card">
+                <p class="h3 stats-title">
+                <span class="counter" data-target="60" data-prefix="-" data-suffix="%">0</span>
+                </p>
+                <p class="stats-text">Tareas manuales</p>
+            </li>
+
+            <li class="stats-card">
+                <p class="h3 stats-title">
+                <span class="counter" data-target="30" data-prefix="+" data-suffix="%">0</span>
+                </p>
+                <p class="stats-text">Conversiones</p>
+            </li>
+            </ul>
         </div>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Enlaces</p></li>
-          <li><a href="#" class="footer-link">Inicio</a></li>
-          <li><a href="#about" class="footer-link">Sobre nosotros</a></li>
-          <li><a href="#services" class="footer-link">Servicios</a></li>
-          <li><a href="#blog" class="footer-link">Blog</a></li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Servicios</p></li>
-          <li><a href="#services" class="footer-link">Estrategia & Analítica</a></li>
-          <li><a href="#services" class="footer-link">Desarrollo Web</a></li>
-          <li><a href="#services" class="footer-link">Integraciones & Automatización</a></li>
-          <li><a href="#features" class="footer-link">Cómo lo hacemos</a></li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Otros</p></li>
-          <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
-          <li><a href="#" class="footer-link">Política de privacidad</a></li>
-          <li><a href="#" class="footer-link">Términos y condiciones</a></li>
-          <li><a href="#" class="footer-link">Soporte</a></li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Contacto</p></li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
-            <div>
-              <a href="#" class="footer-item-link">+34 600 000 000</a>
-            </div>
-          </li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
-            <div>
-              <a href="#" class="footer-item-link">hola@levantiq.com</a>
-            </div>
-          </li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
-            <address class="footer-item-link">Madrid, España</address>
-          </li>
-        </ul>
-
       </div>
+    </section>
+
+   <!-- SUBSERVICIOS (TU LISTA) → CARRUSEL -->
+<section class="section service" id="ia-servicios">
+  <div class="container">
+    <h2 class="h2 section-title underline">Automatizaciones que implementamos</h2>
+
+    <div id="ia-carousel" class="carousel" aria-roledescription="carrusel">
+      <button class="carousel-btn prev" aria-label="Anterior">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+
+      <ul class="carousel-track service-list" role="listbox" aria-live="polite">
+        <!-- Slide 1 -->
+        <li class="carousel-slide" role="option" aria-label="Llamadas entrantes">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="call-outline"></ion-icon></div>
+            <h3 class="h3 title">Llamadas entrantes</h3>
+            <p class="text">
+              IVR inteligente que detecta idioma, verifica datos (DNI/teléfono), consulta pedidos o citas
+              y enruta a la cola correcta. Integración con CRM y registro automático de la conversación.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=ia-llamadas">Ver demo</a>
+          </div>
+        </li>
+
+        <!-- Slide 2 -->
+        <li class="carousel-slide" role="option" aria-label="Gestor de reservas">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="calendar-outline"></ion-icon></div>
+            <h3 class="h3 title">Gestor de reservas</h3>
+            <p class="text">
+              Agenda automática por WhatsApp, web o teléfono: disponibilidad en tiempo real, recordatorios,
+              cambios/cancelaciones y sincronización con Google/Outlook/CRM.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=ia-reservas">Ver demo</a>
+          </div>
+        </li>
+
+        <!-- Slide 3 -->
+        <li class="carousel-slide" role="option" aria-label="Automatizar recordatorios">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="alarm-outline"></ion-icon></div>
+            <h3 class="h3 title">Automatizar recordatorios</h3>
+            <p class="text">
+              Recordatorios multicanal (email/SMS/WhatsApp) para citas, pagos, renovaciones o tareas internas,
+              con reintentos y registro de confirmaciones.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=ia-recordatorios">Ver demo</a>
+          </div>
+        </li>
+
+        <!-- Slide 4 -->
+        <li class="carousel-slide" role="option" aria-label="Asistente personal">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="sparkles-outline"></ion-icon></div>
+            <h3 class="h3 title">Asistente personal</h3>
+            <p class="text">
+              Un copilot para tu equipo: redacta emails, genera resúmenes, busca en tus documentos y prepara
+              respuestas basadas en tus procesos y datos internos.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=ia-asistente">Ver demo</a>
+          </div>
+        </li>
+
+        <!-- Slide 5 -->
+        <li class="carousel-slide" role="option" aria-label="Atención al cliente">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="chatbubbles-outline"></ion-icon></div>
+            <h3 class="h3 title">Atención al cliente</h3>
+            <p class="text">
+              Chat/WhatsApp con IA entrenada en tus FAQs, políticas y catálogos. Escala a humano cuando toca, con
+              traspaso de contexto y registro en CRM.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=ia-atencion">Ver demo</a>
+          </div>
+        </li>
+      </ul>
+
+      <button class="carousel-btn next" aria-label="Siguiente">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
     </div>
+  </div>
+</section>
 
-    <div class="footer-bottom">
-      <p class="copyright">
-        &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
-      </p>
+    <!-- CÓMO LO HACEMOS -->
+    <section class="section features" id="como-lo-hacemos">
+      <div class="container">
+        <h2 class="h2 section-title underline">Cómo lo hacemos</h2>
+
+        <ul class="features-list">
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="bulb-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Descubrimiento & Caso de uso</h3>
+                <p class="text">Elegimos 1–2 procesos con impacto claro y ROI rápido. Definimos métricas de éxito.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Diseño de conversación & flujos</h3>
+                <p class="text">Guiones, tonos, validaciones y rutas de escalado a humano con traspaso de contexto.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <figure class="features-banner">
+          <img src="./assets/images/ChatGPT Image 17 sept 2025, 13_06_08.png" width="369" height="318" loading="lazy"
+               alt="Ilustración de procesos" class="w-100 banner-animation">
+        </figure>
+
+        <ul class="features-list">
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="code-slash-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Integración & Seguridad</h3>
+                <p class="text">Conectores con tu CRM/ERP, cumplimiento RGPD y trazabilidad end-to-end.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="rocket-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Piloto & Mejora continua</h3>
+                <p class="text">Lanzamiento controlado, métricas, feedback y entrenamiento incremental.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CASOS DE USO -->
+    <section class="section blog" id="casos">
+      <div class="container">
+        <h2 class="h2 section-title underline">Casos de uso</h2>
+
+        <ul class="blog-list">
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <!-- EDITA RUTA SI ES NECESARIO -->
+                <img src="./assets/images/ChatGPT Image 17 sept 2025, 12_20_27-IA-HombreEscribiendoOrdenador.png"
+                     width="750" height="350" loading="lazy" alt="Clínicas y reservas" class="img-cover">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Clínicas: reservas sin fricción</a></h3>
+                <p class="text">Agenda automática, recordatorios, cambios y pre-cualificación por WhatsApp o teléfono.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <!-- EDITA RUTA SI ES NECESARIO -->
+                <img src="./assets/images/ChatGPT%20Image%2017%20sept%202025,%2012_19_13-IA-Mujer.png"
+                     width="750" height="350" loading="lazy" alt="Ecommerce y soporte" class="img-cover">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Ecommerce: soporte y seguimiento</a></h3>
+                <p class="text">Estado de pedido, cambios de envío, incidencias y devoluciones 24/7 con escalado a agente.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <!-- EDITA RUTA SI ES NECESARIO -->
+                <img src="./assets/images/ChatGPT Image 17 sept 2025, 12_20_45IA-MujerHablandoConIA.png"
+                     width="750" height="350" loading="lazy" alt="Oficinas y tareas" class="img-cover">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Oficinas: tareas y comunicaciones</a></h3>
+                <p class="text">Resúmenes automáticos, borradores de email, actas y recordatorios de pagos/renovaciones.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section" id="cta">
+      <div class="container" style="text-align:center">
+        <h2 class="h2 section-title underline">¿Lo vemos en tu negocio?</h2>
+        <p class="text" style="max-width:720px;margin-inline:auto">
+          Te enseñamos un caso real adaptado a tu sector y calculamos el impacto en horas ahorradas y conversiones.
+        </p>
+        <br>
+            
+        </br>
+        <a class="btn" href="contacto.html?service=ia-automatizacion">
+          <span>Solicitar demo</span>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</main>
+
+<!-- #FOOTER -->
+<footer class="footer">
+  <div class="footer-top section">
+    <div class="container">
+
+      <div class="footer-brand">
+        <a href="#" class="logo">Levantiq</a>
+        <p class="text">
+          Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        </p>
+
+        <ul class="social-list">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        </ul>
+      </div>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Enlaces</p></li>
+        <li><a href="#" class="footer-link">Inicio</a></li>
+        <li><a href="#about-ia" class="footer-link">Por qué IA</a></li>
+        <li><a href="#ia-servicios" class="footer-link">Automatizaciones</a></li>
+        <li><a href="#casos" class="footer-link">Casos de uso</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Servicios</p></li>
+        <li><a href="marketing.html" class="footer-link">Marketing Digital</a></li>
+        <li><a href="desarrollo.html" class="footer-link">Desarrollo Web</a></li>
+        <li><a href="ia.html" class="footer-link">IA & Automatización</a></li>
+        <li><a href="index.html#features" class="footer-link">Cómo lo hacemos</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Otros</p></li>
+        <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+        <li><a href="#" class="footer-link">Política de privacidad</a></li>
+        <li><a href="#" class="footer-link">Términos y condiciones</a></li>
+        <li><a href="#" class="footer-link">Soporte</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Contacto</p></li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">+34 600 000 000</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">hola@levantiq.com</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
+          <address class="footer-item-link">Madrid, España</address>
+        </li>
+      </ul>
+
     </div>
+  </div>
 
-  </footer>
+  <div class="footer-bottom">
+    <p class="copyright">
+      &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
 
-  <a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
-    <ion-icon name="arrow-up-outline"></ion-icon>
-  </a>
+<!-- #GO TO TOP -->
+<a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
+  <ion-icon name="arrow-up-outline"></ion-icon>
+</a>
 
-  <script src="./assets/js/script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- js -->
+<script src="./assets/js/script.js"></script>
+
+<!-- ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

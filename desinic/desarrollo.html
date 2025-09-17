@@ -5,42 +5,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Desarrollo Web — Levantiq</title>
+
+  <!-- favicon -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+
+  <!-- css -->
   <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body id="top">
 
-  <!-- Header -->
-  <!-- #HEADER -->
+<!-- #HEADER -->
 <header class="header" data-header>
   <div class="container">
-
     <div class="overlay" data-overlay></div>
 
-    <!-- Logo → a la Home -->
-    <a href="index.html">
-      <h1 class="logo">Levantiq</h1>
-    </a>
+    <a href="index.html"><h1 class="logo">Levantiq</h1></a>
 
     <nav class="navbar" data-navbar>
-
       <div class="navbar-top">
         <a href="index.html" class="logo">Levantiq</a>
-
         <button class="nav-close-btn" aria-label="Cerrar menú" data-nav-close-btn>
           <ion-icon name="close-outline"></ion-icon>
         </button>
       </div>
 
       <ul class="navbar-list">
-        <!-- Anclas internas de la home -->
         <li class="navbar-item"><a href="index.html#home" class="navbar-link" data-navbar-link>Inicio</a></li>
         <li class="navbar-item"><a href="index.html#about" class="navbar-link" data-navbar-link>Sobre nosotros</a></li>
 
-        <!-- Servicios con desplegable -->
         <li class="navbar-item has-dropdown">
           <button class="navbar-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
             Servicios
@@ -56,160 +53,414 @@
         <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
         <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
 
-        <!-- Contacto → página aparte -->
         <li class="navbar-item"><a href="contacto.html" class="navbar-link" data-navbar-link>Contáctanos</a></li>
       </ul>
-
     </nav>
 
-    <!-- Botón principal → página de contacto -->
     <a href="contacto.html" class="btn">
-      <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
       <span>Contáctanos</span>
     </a>
 
     <button class="nav-open-btn" aria-label="Abrir menú" data-nav-open-btn>
       <ion-icon name="menu-outline"></ion-icon>
     </button>
-
   </div>
 </header>
 
-  <main>
-    <article>
+<main>
+  <article>
 
-      <!-- Hero -->
-      <section class="hero" style="padding-block-start:140px">
-        <div class="container">
-          <div class="hero-content">
-            <p class="hero-subtitle">Servicios</p>
-            <h1 class="h2 hero-title">Desarrollo Web</h1>
-            <p class="hero-text">Webs rápidas, accesibles y listas para captar: desde corporativas hasta e-commerce.</p>
-            <a class="btn" href="contacto.html?service=desarrollo-web">Pedir propuesta</a>
-          </div>
-          <figure class="hero-banner">
-            <img class="w-100 banner-animation" src="./assets/images/hero-banner.png" width="694" height="529" alt="Desarrollo Web">
-          </figure>
-        </div>
-      </section>
-
-      <!-- Subservicios -->
-      <section class="section">
-        <div class="container">
-          <h2 class="h2 section-title underline">Qué hacemos</h2>
-
-          <div class="subgrid">
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="home-outline"></ion-icon> Web corporativa</h4>
-              <p class="subtext">4–6 secciones, rendimiento alto (CWV), RGPD, blog y formularios conectados para captar oportunidades.</p>
-              <a class="cta-link" href="contacto.html?service=web-corporativa">Desde 1.499€ <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="bag-handle-outline"></ion-icon> Tienda online</h4>
-              <p class="subtext">Catálogo, pagos/envíos, automatizaciones esenciales y recuperación de carritos.</p>
-              <a class="cta-link" href="contacto.html?service=tienda-online">Desde 1.999€ <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="link-outline"></ion-icon> Integraciones Web ↔ sistemas</h4>
-              <p class="subtext">Conectamos formularios, leads y datos con tus herramientas de negocio para centralizar todo.</p>
-              <a class="cta-link" href="contacto.html?service=integraciones-web">Pide presupuesto <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="shield-checkmark-outline"></ion-icon> Mantenimiento & performance</h4>
-              <p class="subtext">Actualizaciones, backups, seguridad y mejoras de velocidad de forma continua.</p>
-              <a class="cta-link" href="contacto.html?service=mantenimiento-web">49€/mes <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </article>
-  </main>
-
-  <!-- Footer -->
-  <!-- #FOOTER -->
-  <footer class="footer">
-
-    <div class="footer-top section">
+    <!-- HERO -->
+    <section class="hero" style="padding-block-start:140px">
       <div class="container">
 
-        <div class="footer-brand">
-          <a href="#" class="logo">Levantiq</a>
-          <p class="text">
-            Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        <div class="hero-content">
+          <p class="hero-subtitle">Servicios</p>
+          <h1 class="h2 hero-title">Desarrollo Web</h1>
+          <p class="hero-text">
+            Webs modernas, rápidas y orientadas a negocio. Diseñamos desde cero o modernizamos tu sitio para que cargue
+            mejor, posicione mejor y convierta más — en cualquier dispositivo.
           </p>
 
-          <ul class="social-list">
-            <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <a class="btn" href="contacto.html?service=desarrollo-web">
+            <span>Quiero mi web</span>
+          </a>
+        </div>
+
+        <figure class="hero-banner">
+          <!-- EDITA RUTA SI ES NECESARIO -->
+          <img class="w-100 banner-animation"
+            src="./assets/images/ChatGPT%20Image%2017%20sept%202025,%2014_04_18-Desarrolloweb-Programador.png"
+            width="694" height="529" loading="lazy" alt="Equipo desarrollando una web moderna">
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ABOUT (lado a lado) -->
+    <section class="section about" id="about-web">
+      <div class="container">
+
+        <figure class="about-banner">
+          <!-- EDITA RUTA SI ES NECESARIO -->
+          <img class="w-100 banner-animation"
+            src="./assets/images/ChatGPT Image 17 sept 2025, 14_04_13Desarrolloweb-Tresfotos-en-una.png"
+            width="700" height="532" loading="lazy" alt="Equipo y procesos de desarrollo">
+        </figure>
+
+        <div class="about-content">
+          <h2 class="h2 section-title underline">Webs que impulsan tu negocio</h2>
+
+          <p class="about-text">
+            Un sitio web debe ser más que “bonito”: tiene que cargar <em>rápido</em>, ser <em>accesible</em>, fácil de
+            gestionar y estar <em>conectado</em> con tus herramientas. Construimos plataformas centradas en conversión,
+            preparadas para SEO y listas para crecer.
+          </p>
+
+          <p class="about-text">
+            Trabajamos con un proceso claro: descubrimiento, diseño, desarrollo, QA y lanzamiento; medimos y mejoramos
+            continuamente con datos reales.
+          </p>
+
+          <ul class="stats-list">
+            <li class="stats-card">
+              <p class="h3 stats-title">CWV</p>
+              <p class="stats-text">Core Web Vitals</p>
+            </li>
+            <li class="stats-card">
+              <p class="h3 stats-title">A11y</p>
+              <p class="stats-text">Accesibilidad</p>
+            </li>
+            <li class="stats-card">
+              <p class="h3 stats-title">RGPD</p>
+              <p class="stats-text">Privacidad & datos</p>
+            </li>
           </ul>
         </div>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Enlaces</p></li>
-          <li><a href="#" class="footer-link">Inicio</a></li>
-          <li><a href="#about" class="footer-link">Sobre nosotros</a></li>
-          <li><a href="#services" class="footer-link">Servicios</a></li>
-          <li><a href="#blog" class="footer-link">Blog</a></li>
+      </div>
+    </section>
+
+    <!-- SERVICIOS (rejilla de cards siguiendo tu patrón) -->
+    <section class="section service" id="servicios-web">
+      <div class="container">
+
+        <h2 class="h2 section-title underline">Servicios de desarrollo web</h2>
+
+        <ul class="service-list">
+
+          <!-- Diseño & Desarrollo Web -->
+          <li>
+            <a href="contacto.html?service=diseno-desarrollo-web" class="service-card" aria-label="Diseño y Desarrollo web">
+              <div class="card-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+              <h3 class="h3 title">Diseño & Desarrollo Web</h3>
+              <p class="text">
+                Webs a medida con arquitectura clara, contenido orientado a conversión y un CMS fácil de gestionar.
+              </p>
+            </a>
+          </li>
+
+          <!-- Modernización & Replatforming -->
+          <li>
+            <a href="contacto.html?service=modernizacion-replatforming" class="service-card" aria-label="Modernización y Replatforming">
+              <div class="card-icon"><ion-icon name="sync-outline"></ion-icon></div>
+              <h3 class="h3 title">Modernización & Replatforming</h3>
+              <p class="text">
+                Renovamos diseño, performance y tecnología. Migraciones seguras sin perder SEO ni datos.
+              </p>
+            </a>
+          </li>
+
+          <!-- Ecommerce -->
+          <li>
+            <a href="contacto.html?service=ecommerce" class="service-card" aria-label="Ecommerce">
+              <div class="card-icon"><ion-icon name="cart-outline"></ion-icon></div>
+              <h3 class="h3 title">E-commerce</h3>
+              <p class="text">
+                Catálogos, pagos, envíos y automatizaciones. Carritos recuperados y fichas que convierten.
+              </p>
+            </a>
+          </li>
+
+          <!-- SEO técnico & Performance -->
+          <li>
+            <a href="contacto.html?service=seo-tecnico-performance" class="service-card" aria-label="SEO técnico y Performance">
+              <div class="card-icon"><ion-icon name="speedometer-outline"></ion-icon></div>
+              <h3 class="h3 title">SEO técnico & Performance</h3>
+              <p class="text">
+                Core Web Vitals, indexación, datos estructurados y auditorías para que tu web sea rápida y visible.
+              </p>
+            </a>
+          </li>
+
+          <!-- CRO & Analítica -->
+          <li>
+            <a href="contacto.html?service=cro-analitica" class="service-card" aria-label="CRO y Analítica">
+              <div class="card-icon"><ion-icon name="analytics-outline"></ion-icon></div>
+              <h3 class="h3 title">CRO & Analítica</h3>
+              <p class="text">
+                Medición con GA4/Tag Manager, paneles y tests A/B para optimizar formularios, checkout y embudos.
+              </p>
+            </a>
+          </li>
+
+          <!-- Integraciones & Automatización -->
+          <li>
+            <a href="contacto.html?service=integraciones-automatizacion" class="service-card" aria-label="Integraciones y Automatización">
+              <div class="card-icon"><ion-icon name="link-outline"></ion-icon></div>
+              <h3 class="h3 title">Integraciones & Automatización</h3>
+              <p class="text">
+                Conectamos tu web con CRM, ERP, email marketing, pasarelas y asistentes de IA para ahorrar tiempo.
+              </p>
+            </a>
+          </li>
+
+          <!-- Branding & Creatividad -->
+          <li>
+            <a href="contacto.html?service=branding-creatividad" class="service-card" aria-label="Branding y Creatividad">
+              <div class="card-icon"><ion-icon name="brush-outline"></ion-icon></div>
+              <h3 class="h3 title">Branding & Creatividad</h3>
+              <p class="text">
+                Identidad visual, sistema de componentes y diseño gráfico coherente en todos tus puntos de contacto.
+              </p>
+            </a>
+          </li>
+
+          <!-- Contenido & Comunicación Web -->
+          <li>
+            <a href="contacto.html?service=contenido-comunicacion" class="service-card" aria-label="Contenido y Comunicación Web">
+              <div class="card-icon"><ion-icon name="create-outline"></ion-icon></div>
+              <h3 class="h3 title">Contenido & Comunicación Web</h3>
+              <p class="text">
+                UX writing, SEO on-page y páginas que explican beneficios con claridad (servicios, landing pages, blog).
+              </p>
+            </a>
+          </li>
+
+          <!-- Mantenimiento & Soporte -->
+          <li>
+            <a href="contacto.html?service=mantenimiento-soporte" class="service-card" aria-label="Mantenimiento y soporte">
+              <div class="card-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+              <h3 class="h3 title">Mantenimiento & Soporte</h3>
+              <p class="text">
+                Actualizaciones, backups, seguridad, monitorización y evolutivos para mantener tu web siempre a punto.
+              </p>
+            </a>
+          </li>
+
         </ul>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Servicios</p></li>
-          <li><a href="#services" class="footer-link">Estrategia & Analítica</a></li>
-          <li><a href="#services" class="footer-link">Desarrollo Web</a></li>
-          <li><a href="#services" class="footer-link">Integraciones & Automatización</a></li>
-          <li><a href="#features" class="footer-link">Cómo lo hacemos</a></li>
-        </ul>
+      </div>
+    </section>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Otros</p></li>
-          <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
-          <li><a href="#" class="footer-link">Política de privacidad</a></li>
-          <li><a href="#" class="footer-link">Términos y condiciones</a></li>
-          <li><a href="#" class="footer-link">Soporte</a></li>
-        </ul>
+    <!-- CÓMO LO HACEMOS (mismo patrón de index) -->
+    <section class="section features" id="features-web">
+      <div class="container">
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Contacto</p></li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
-            <div>
-              <a href="#" class="footer-item-link">+34 600 000 000</a>
+        <h2 class="h2 section-title underline">Cómo lo hacemos</h2>
+
+        <ul class="features-list">
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="bulb-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Descubrimiento & Arquitectura</h3>
+                <p class="text">Objetivos, usuarios, mapa web y contenido. Priorizamos por impacto en negocio.</p>
+              </div>
             </div>
           </li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
-            <div>
-              <a href="#" class="footer-item-link">hola@levantiq.com</a>
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Diseño</h3>
+                <p class="text">Wireframes y UI centrada en conversión y accesibilidad. Sistema de componentes.</p>
+              </div>
             </div>
           </li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
-            <address class="footer-item-link">Madrid, España</address>
+        </ul>
+
+        <figure class="features-banner">
+          <!-- EDITA RUTA SI ES NECESARIO -->
+          <img class="w-100 banner-animation"
+               src="./assets/images/ChatGPT Image 17 sept 2025, 14_04_22Desarrolloweb-PersonasDisfrutando.png"
+               width="369" height="318" loading="lazy" alt="Proceso visual de diseño y desarrollo">
+        </figure>
+
+        <ul class="features-list">
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="code-slash-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Desarrollo & QA</h3>
+                <p class="text">Implementación sólida, pruebas funcionales y checklist de rendimiento y accesibilidad.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="rocket-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Lanzamiento & Mejora</h3>
+                <p class="text">Despliegue controlado, monitorización y mejora continua basada en datos.</p>
+              </div>
+            </div>
           </li>
         </ul>
 
       </div>
+    </section>
+
+    <!-- CASOS / SECTORES (usa estilo blog-list para consistencia) -->
+    <section class="section blog" id="casos">
+      <div class="container">
+        <h2 class="h2 section-title underline">Proyectos y sectores</h2>
+
+        <ul class="blog-list">
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <!-- EDITA RUTA SI ES NECESARIO -->
+                <img class="img-cover" width="750" height="350" loading="lazy"
+                  src="./assets/images/ChatGPT Image 17 sept 2025, 14_40_38DesarrolloWeb-Herramientas.png"
+                  alt="Web corporativa para servicios profesionales">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Empresas de servicios</a></h3>
+                <p class="text">Webs corporativas enfocadas a captar: servicios claros, pruebas sociales y formularios conectados.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <img class="img-cover" width="750" height="350" loading="lazy"
+                  src="./assets/images/ChatGPT%20Image%2017%20sept%202025,%2014_04_18-Desarrolloweb-Programador.png"
+                  alt="Ecommerce en crecimiento">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">E-commerce</a></h3>
+                <p class="text">Catálogo, pagos, envíos y analítica. Optimización de fichas y funnels para aumentar el ticket medio.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <img class="img-cover" width="750" height="350" loading="lazy"
+                  src="./assets/images/ChatGPT Image 17 sept 2025, 14_44_41-DesarrolloWeb-Codigo.png"
+                  alt="Modernización y migraciones">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Modernización</a></h3>
+                <p class="text">Replanteamos arquitectura, diseño y rendimiento sin perder posicionamiento ni datos.</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="cta">
+      <div class="container" style="text-align:center">
+        <h2 class="h2 section-title underline">¿Empezamos tu web?</h2>
+        <p class="text" style="max-width:720px;margin-inline:auto">
+          Te mostramos referencias, definimos el alcance y te proponemos un roadmap por sprints para lanzar rápido y bien.
+        </p>
+        <br></br>
+        <a class="btn" href="contacto.html?service=desarrollo-web">
+          <span>Hablemos</span>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</main>
+
+<!-- #FOOTER -->
+<footer class="footer">
+  <div class="footer-top section">
+    <div class="container">
+
+      <div class="footer-brand">
+        <a href="#" class="logo">Levantiq</a>
+        <p class="text">
+          Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        </p>
+
+        <ul class="social-list">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        </ul>
+      </div>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Enlaces</p></li>
+        <li><a href="index.html" class="footer-link">Inicio</a></li>
+        <li><a href="#about-web" class="footer-link">Por qué nuestra web</a></li>
+        <li><a href="#servicios-web" class="footer-link">Servicios</a></li>
+        <li><a href="#features-web" class="footer-link">Cómo lo hacemos</a></li>
+        <li><a href="#casos" class="footer-link">Proyectos y sectores</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Servicios</p></li>
+        <li><a href="marketing.html" class="footer-link">Marketing Digital</a></li>
+        <li><a href="desarrollo.html" class="footer-link">Desarrollo Web</a></li>
+        <li><a href="ia.html" class="footer-link">IA & Automatización</a></li>
+        <li><a href="index.html#features" class="footer-link">Cómo lo hacemos</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Otros</p></li>
+        <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+        <li><a href="#" class="footer-link">Política de privacidad</a></li>
+        <li><a href="#" class="footer-link">Términos y condiciones</a></li>
+        <li><a href="#" class="footer-link">Soporte</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Contacto</p></li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">+34 600 000 000</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">hola@levantiq.com</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
+          <address class="footer-item-link">Madrid, España</address>
+        </li>
+      </ul>
+
     </div>
+  </div>
 
-    <div class="footer-bottom">
-      <p class="copyright">
-        &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
-      </p>
-    </div>
+  <div class="footer-bottom">
+    <p class="copyright">
+      &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
 
-  </footer>
+<!-- #GO TO TOP -->
+<a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
+  <ion-icon name="arrow-up-outline"></ion-icon>
+</a>
 
-  <a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
-    <ion-icon name="arrow-up-outline"></ion-icon>
-  </a>
+<!-- js -->
+<script src="./assets/js/script.js"></script>
 
-  <script src="./assets/js/script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

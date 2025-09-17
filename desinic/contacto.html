@@ -6,13 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto — Levantiq</title>
 
+  <!-- Favicon & hoja de estilos principal -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <!-- Google Fonts (como en index) -->
+  <!-- Google Fonts (mismo set que en index) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Ajustes específicos para el botón y el embed (puedes moverlos a style.css si prefieres) -->
+  <style>
+    /* Botón estilo píldora, tamaño más contenido */
+    .btn-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      padding:12px 20px;
+      font-size:16px;
+      font-weight:600;
+      color:#fff;
+      background: linear-gradient(90deg,#ff2d73,#ff6b6b);
+      border-radius: 16px 44px;
+      box-shadow: 0 10px 25px rgba(255,75,110,.25);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-cta:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(255,75,110,.3); }
+
+    /* Centrado del botón bajo el título */
+    .cta-wrap{ text-align:center; margin: 8px 0 16px; }
+
+    /* Elimina el “rectángulo”/card por debajo del botón */
+    .cal-card{
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    /* Asegura que el calendario se vea (altura mínima) */
+    #my-cal-inline-30min{
+      width:100%;
+      min-height: 720px;
+      overflow: visible;
+    }
+  </style>
 
   <!-- JSON-LD básico -->
   <script type="application/ld+json">
@@ -52,13 +91,12 @@
           <li class="navbar-item"><a href="index.html#services" class="navbar-link" data-navbar-link>Servicios</a></li>
           <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
           <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
-          <li class="navbar-item"><a href="contacto.html" class="navbar-link" data-navbar-link>Contáctanos</a></li>
         </ul>
       </nav>
 
-      <a href="#form" class="btn">
-        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-        <span>Contáctanos</span>
+      <!-- Botón header → baja a la agenda -->
+      <a href="#agenda" class="btn-cta js-open-agenda">
+        <span>Reservar sesión</span>
       </a>
 
       <button class="nav-open-btn" aria-label="Abrir menú" data-nav-open-btn>
@@ -75,9 +113,9 @@
         <div class="container">
           <div class="hero-content">
             <p class="hero-subtitle">Estamos aquí para ayudarte</p>
-            <h2 class="h2 hero-title">Hablemos de tu proyecto</h2>
-            <p class="hero-text">Cuéntanos qué necesitas y te responderemos muy pronto.</p>
-            <a href="#form" class="btn">Escribir mensaje</a>
+            <h2 class="h2 hero-title">Reserva una sesión</h2>
+            <p class="hero-text">Analizamos tu caso y te proponemos un plan de acción en 30 minutos.</p>
+            <a href="#agenda" class="btn-cta js-open-agenda">Ver disponibilidad</a>
           </div>
 
           <figure class="hero-banner">
@@ -86,66 +124,14 @@
         </div>
       </section>
 
-      <!-- FORMULARIO -->
-      <section class="section" id="form">
+      <!-- AGENDA / CAL.COM -->
+      <section class="section" id="agenda">
         <div class="container">
-          <h2 class="h2 section-title">Formulario de contacto</h2>
+          <h2 class="h2 section-title underline">Reserva una sesión</h2>
 
-          <div class="contact-grid">
-            <!-- Form -->
-                <form id="contact-form" class="contact-form card" novalidate>
-                <!-- Endpoint de la función serverless -->
-                <input type="hidden" name="_endpoint" value="/api/contact">
-                <!-- honeypot -->
-                <input type="text" name="_hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
-
-                <div class="form-field">
-                    <label for="name">Nombre*</label>
-                    <input id="name" name="name" required placeholder="Tu nombre">
-                    <span class="form-help">Este campo es obligatorio.</span>
-                </div> 
-
-                <div class="form-field">
-                    <label for="email">Email*</label>
-                    <input id="email" name="email" type="email" required placeholder="tucorreo@empresa.com">
-                    <span class="form-help">Introduce un email válido.</span>
-                </div>
-
-                <div class="form-field">
-                    <label for="phone">Teléfono</label>
-                    <input id="phone" name="phone" type="tel" placeholder="+34 600 000 000">
-                </div>
-
-                <div class="form-field">
-                    <label for="company">Empresa</label>
-                    <input id="company" name="company" placeholder="Nombre de empresa">
-                </div>
-
-                <div class="form-field">
-                    <label for="message">Mensaje*</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos brevemente tu necesidad"></textarea>
-                    <span class="form-help">Describe brevemente qué necesitas.</span>
-                </div>
-
-                <label class="checkline">
-                    <input id="rgpd" type="checkbox" required>
-                    <span>Acepto la <a href="privacidad.html">Política de privacidad</a>.</span>
-                </label>
-
-                <div class="form-actions">
-                    <button class="btn" type="submit" id="sendBtn" disabled>Enviar</button>
-                    <p id="contact-feedback" class="text" style="display:none;"></p>
-                </div>
-                </form>
-
-            <!-- Aside -->
-            <aside class="contact-aside card">
-              <h3 class="h3">Otros canales</h3>
-              <p class="text"><strong>Email:</strong> <a href="mailto:hola@levantiq.com">hola@levantiq.com</a></p>
-              <p class="text"><strong>Teléfono:</strong> <a href="tel:+34600000000">+34 600 000 000</a></p>
-              <p class="text"><strong>Ubicación:</strong> Madrid, España</p>
-              <a class="btn" href="#" aria-label="Escribir por WhatsApp">Escribir por WhatsApp</a>
-            </aside>
+          <!-- Calendario embebido -->
+          <div class="cal-card">
+            <div id="my-cal-inline-30min"></div>
           </div>
         </div>
       </section>
@@ -216,67 +202,63 @@
     <ion-icon name="arrow-up-outline"></ion-icon>
   </a>
 
-  <!-- JS -->
+  <!-- JS principal -->
   <script src="./assets/js/script.js"></script>
 
   <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <!-- Envío AJAX + validación + RGPD (si no usas el script unificado) -->
-  <script>
-    (function () {
-      const form = document.getElementById('contact-form');
-      const fb = document.getElementById('contact-feedback');
-      const rgpd = document.getElementById('rgpd');
-      const sendBtn = document.getElementById('sendBtn');
-
-      function toggleBtn(){ if(sendBtn) sendBtn.disabled = !rgpd.checked; }
-      rgpd?.addEventListener('change', toggleBtn); toggleBtn();
-
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        form.classList.add('was-validated');
-        fb.style.display='none'; fb.className='';
-
-        if (!form.checkValidity()) {
-          fb.textContent = 'Revisa los campos marcados en rojo.';
-          fb.classList.add('error'); fb.style.display='block';
+  <!-- Cal inline embed code (usa tu calLink real) -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {}; cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else {
+            p(cal, ar);
+          }
           return;
         }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        const data = new FormData(form);
-        if (data.get('_hp')) return; // honeypot
-        const endpoint = data.get('_endpoint');
+    Cal("init", "30min", { origin:"https://app.cal.com" });
 
-        const payload = {
-          name: (data.get('name')||'').toString().trim(),
-          email: (data.get('email')||'').toString().trim(),
-          phone: (data.get('phone')||'').toString().trim(),
-          company: (data.get('company')||'').toString().trim(),
-          message: (data.get('message')||'').toString().trim(),
-          source: 'levantiq-contacto'
-        };
+    Cal.ns["30min"]("inline", {
+      elementOrSelector:"#my-cal-inline-30min",
+      config: { "layout":"month_view" },
+      calLink: "ppt-boarding-okh1y4/30min"   // <-- sustituye por TU enlace real
+    });
 
-        try {
-          const res = await fetch(endpoint, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify(payload)
-          });
-          if(!res.ok) throw 0;
+    Cal.ns["30min"]("ui", { "hideEventTypeDetails": false, "layout":"month_view" });
+  </script>
 
-          fb.textContent = '¡Gracias! Hemos recibido tu mensaje.';
-          fb.classList.add('success'); fb.style.display='block';
-          form.reset(); toggleBtn();
-
-          if (typeof gtag === 'function') { gtag('event','lead_submit',{form:'contacto_page'}); }
-        } catch {
-          fb.textContent = 'Hubo un problema al enviar. Inténtalo de nuevo.';
-          fb.classList.add('error'); fb.style.display='block';
-        }
+  <!-- Scroll suave al embed al pulsar “Reservar sesión / Ver disponibilidad / Abrir agenda” -->
+  <script>
+    document.querySelectorAll('.js-open-agenda').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // Evita salto brusco si hay hash
+        if (btn.hash) e.preventDefault();
+        const cal = document.getElementById('my-cal-inline-30min');
+        if (cal) cal.scrollIntoView({ behavior:'smooth', block:'start' });
       });
-    })();
+    });
   </script>
 </body>
 </html>
