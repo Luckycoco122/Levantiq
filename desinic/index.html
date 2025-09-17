@@ -23,8 +23,8 @@
 
 <body id="top">
 
-  <!-- #HEADER -->
- <header class="header" data-header>
+<!-- #HEADER -->
+<header class="header" data-header>
   <div class="container">
 
     <div class="overlay" data-overlay></div>
@@ -48,7 +48,20 @@
         <!-- Anclas internas de la home -->
         <li class="navbar-item"><a href="index.html#home" class="navbar-link" data-navbar-link>Inicio</a></li>
         <li class="navbar-item"><a href="index.html#about" class="navbar-link" data-navbar-link>Sobre nosotros</a></li>
-        <li class="navbar-item"><a href="index.html#services" class="navbar-link" data-navbar-link>Servicios</a></li>
+
+        <!-- Servicios con desplegable -->
+        <li class="navbar-item has-dropdown">
+          <button class="navbar-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Servicios
+            <ion-icon name="chevron-down-outline" class="chev" aria-hidden="true"></ion-icon>
+          </button>
+          <ul class="dropdown">
+            <li><a href="marketing.html"  class="dropdown-link" data-navbar-link>Marketing Digital</a></li>
+            <li><a href="desarrollo.html" class="dropdown-link" data-navbar-link>Desarrollo Web</a></li>
+            <li><a href="ia.html"         class="dropdown-link" data-navbar-link>IA</a></li>
+          </ul>
+        </li>
+
         <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
         <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
 
@@ -146,65 +159,61 @@
       </section>
 
       <!-- #SERVICE -->
-      <section class="section service" id="services">
-        <div class="container">
+<section class="section service" id="services">
+  <div class="container">
 
-          <h2 class="h2 section-title underline">Especializaciones</h2>
+    <h2 class="h2 section-title underline">Servicios</h2>
 
-          <ul class="service-list">
+    <ul class="service-list">
 
-            <li>
-              <div class="service-card">
-                <div class="card-icon">
-                  <ion-icon name="telescope-outline"></ion-icon>
-                </div>
-                <h3 class="h3 title">Estrategia & Analítica</h3>
-                <p class="text">
-                  Mapeamos procesos, definimos KPIs y diseñamos la arquitectura de medición para priorizar
-                  automatizaciones y acciones con mayor retorno.
-                </p>
-                <button class="card-btn" aria-label="Saber más">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </button>
-              </div>
-            </li>
+  <!-- MARKETING DIGITAL -->
+  <li id="svc-mkt">
+    <a href="marketing.html" class="service-card" aria-label="Marketing Digital">
+      <div class="card-icon">
+        <ion-icon name="trending-up-outline"></ion-icon>
+      </div>
+      <h3 class="h3 title">Marketing Digital</h3>
+      <p class="text">
+        Hacemos que te encuentren y que conviertan: visibilidad local, captación de leads y
+        comunicaciones que trabajan solas.
+      </p>
+    </a>
+  </li>
 
-            <li>
-              <div class="service-card">
-                <div class="card-icon">
-                  <ion-icon name="desktop-outline"></ion-icon>
-                </div>
-                <h3 class="h3 title">Desarrollo Web</h3>
-                <p class="text">
-                  Landings y webs corporativas enfocadas en velocidad, accesibilidad y SEO.
-                  Formularios y contenidos orientados a conversión, listos para crecer.
-                </p>
-                <button class="card-btn" aria-label="Saber más">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </button>
-              </div>
-            </li>
+  <!-- DESARROLLO WEB -->
+  <li id="svc-web">
+    <a href="desarrollo.html" class="service-card" aria-label="Desarrollo Web">
+      <div class="card-icon">
+        <ion-icon name="desktop-outline"></ion-icon>
+      </div>
+      <h3 class="h3 title">Desarrollo Web</h3>
+      <p class="text">
+        Sitios rápidos, medibles y listos para captar: desde web corporativa hasta tienda online,
+        con rendimiento, accesibilidad y RGPD.
+      </p>
+    </a>
+  </li>
 
-            <li>
-              <div class="service-card">
-                <div class="card-icon">
-                  <ion-icon name="globe-outline"></ion-icon>
-                </div>
-                <h3 class="h3 title">Integraciones & Automatización</h3>
-                <p class="text">
-                  Conectamos tus sistemas de negocio (ventas, marketing, atención al cliente) y
-                  automatizamos tareas clave para reducir tiempos y errores.
-                </p>
-                <button class="card-btn" aria-label="Saber más">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </button>
-              </div>
-            </li>
+  <!-- IA / AUTOMATIZACIÓN -->
+  <li id="svc-ia">
+    <a href="ia.html" class="service-card" aria-label="IA y Automatización">
+      <div class="card-icon">
+        <ion-icon name="sparkles-outline"></ion-icon>
+      </div>
+      <h3 class="h3 title">IA</h3>
+      <p class="text">
+        Automatizamos tareas, sincronizamos datos y atendemos 24/7 con asistentes inteligentes
+        para reducir tiempos y aumentar conversiones.
+      </p>
+    </a>
+  </li>
 
-          </ul>
+</ul>
 
-        </div>
-      </section>
+
+  </div>
+</section>
+
 
       <!-- #FEATURES -->
       <section class="section features" id="features">

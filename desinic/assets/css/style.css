@@ -438,6 +438,17 @@ body {
   padding: 30px;
   box-shadow: var(--shadow);
   border-radius: var(--radius-12);
+   display: block;
+  text-decoration: none;
+  color: inherit;
+  /* si ya tienes estilos de .service-card, esto solo refuerza */
+  border-radius: var(--radius-12);
+}
+
+.service-card:hover,
+.service-card:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
 .service-card .card-icon {
@@ -847,6 +858,8 @@ body {
 
   .service-list { grid-template-columns: 1fr 1fr; }
 
+  
+
 
 
   /**
@@ -1147,4 +1160,46 @@ section[id],
 /* responsive */
 @media (max-width: 991px) {
   .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+/* ---- Dropdown en navbar ---- */
+.navbar .has-dropdown { position: relative; }
+.navbar .dropdown-toggle {
+  display: flex; align-items: center; gap: 6px;
+}
+.navbar .dropdown-toggle .chev { transition: transform .25s ease; }
+
+/* Contenedor del dropdown (desktop) */
+.navbar .dropdown {
+  position: absolute; top: 100%; left: 0;
+  min-width: 220px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 8px 0;
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: .2s ease;
+  z-index: 10;
+}
+.navbar .dropdown .dropdown-link {
+  display: block; padding: 10px 14px; font-size: var(--fs-8);
+  color: var(--space-cadet-1);
+}
+.navbar .dropdown .dropdown-link:hover { background: hsl(0 0% 96%); }
+
+/* Estado abierto */
+.navbar .has-dropdown.open > .dropdown {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.navbar .has-dropdown.open .dropdown-toggle .chev { transform: rotate(180deg); }
+
+/* Móvil: dropdown ocupa ancho completo dentro del panel lateral */
+@media (max-width: 991px) {
+  .navbar .has-dropdown { width: 100%; }
+  .navbar .dropdown {
+    position: static; box-shadow: none; border-radius: 0;
+    transform: none; opacity: 1; visibility: visible; display: none;
+    padding: 0;
+  }
+  .navbar .has-dropdown.open > .dropdown { display: block; }
+  .navbar .dropdown .dropdown-link { padding: 12px 0; }
 }

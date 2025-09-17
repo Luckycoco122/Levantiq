@@ -114,3 +114,33 @@
   });
 
 })();
+
+/* --- Dropdown Servicios --- */
+(function () {
+  const toggles = document.querySelectorAll('.navbar .dropdown-toggle');
+
+  function closeAll() {
+    document.querySelectorAll('.navbar .has-dropdown.open')
+      .forEach(li => li.classList.remove('open'));
+  }
+
+  toggles.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const li = btn.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      closeAll();
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+
+  // Cierra al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.navbar .has-dropdown')) closeAll();
+  });
+
+  // Cierra al navegar a un enlace del dropdown
+  document.querySelectorAll('.navbar .dropdown .dropdown-link')
+    .forEach(a => a.addEventListener('click', () => closeAll()));
+})();
+
