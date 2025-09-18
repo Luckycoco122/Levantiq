@@ -173,6 +173,19 @@
     .forEach(a => a.addEventListener('click', () => closeAll()));
 })();
 
+// ==== helper: scroll suave con offset del header fijo ====
+function scrollToHeadingComoLoHacemos() {
+  const target = document.querySelector('#ia-servicios, #servicios-web,#servicios-mkt ')
+    || Array.from(document.querySelectorAll('h2.section-title.underline'))
+         .find(h2 => /cómo lo hacemos/i.test(h2.textContent.trim()));
+  if (!target) return;
+
+  const headerH = document.querySelector('[data-header]')?.offsetHeight || 0;
+  const extra   = 16; // margen visual
+  const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - extra;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
 /* ===== Carruseles: auto-scroll infinito + flechas + centrado + Vista GRID ===== */
 (function () {
   const roots = document.querySelectorAll('.carousel');
@@ -186,7 +199,6 @@
     if (!track || originals.length === 0) return;
 
     // ====== Botón toggle (si existe en la sección) ======
-    // Busca el botón más cercano dentro del mismo container
     const container = root.closest('.container');
     const toggleBtn = container ? container.querySelector('[data-view-toggle]') : null;
 
@@ -247,7 +259,6 @@
     let paused = false;
 
     function tick() {
-      // En modo GRID, no autodesplazamos
       if (!paused && period > 0 && !root.classList.contains('is-grid')) {
         const next = track.scrollLeft + speed;
         track.scrollLeft = wrapByPeriod(next);
@@ -286,7 +297,7 @@
       const currentCenter = track.scrollLeft + track.clientWidth / 2;
       const targetCenter  = currentCenter + direction * approxStep;
       const left = centerTo(targetCenter);
-      // Si prefieres animación: track.scrollTo({ left, behavior: 'smooth' });
+      // track.scrollTo({ left, behavior: 'smooth' }); // si prefieres animación nativa
       track.scrollLeft = left;
       resumeAfter();
     }
@@ -297,21 +308,20 @@
     // ---------- Toggle GRID / CARRUSEL ----------
     function setGridMode(on) {
       root.classList.add('switching');         // animación (fade/zoom)
-      // En modo grid, pausamos
-      if (on) paused = true;
+      if (on) paused = true;                   // en grid, pausamos auto-scroll
 
-      // Cambia clase
       root.classList.toggle('is-grid', on);
 
-      // Si volvemos al carrusel, recalcula y reanuda
       if (!on) {
-        // Recalcula porque el layout cambió
+        // volvemos al carrusel
         track.scrollLeft = 0;
         measurePeriod();
         paused = false;
+
+        // cuando termina la transición, llevamos el viewport al título "Cómo lo hacemos"
+        setTimeout(scrollToHeadingComoLoHacemos, 320);
       }
 
-      // Cambia icono / aria-pressed
       if (toggleBtn) {
         toggleBtn.setAttribute('aria-pressed', String(on));
         const icon = toggleBtn.querySelector('ion-icon');
@@ -319,7 +329,6 @@
         toggleBtn.title = on ? 'Volver al carrusel' : 'Ver todos';
       }
 
-      // Quita clase de transición tras el frame
       setTimeout(() => root.classList.remove('switching'), 300);
     }
 
@@ -350,6 +359,7 @@
     else window.addEventListener('load', init);
   });
 })();
+
 
 
 /* =========================

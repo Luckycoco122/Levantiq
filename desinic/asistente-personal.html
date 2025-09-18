@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asistente personal con IA — Levantiq</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml"/>
+
+  <!-- css principal del sitio -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap" rel="stylesheet"/>
+</head>
+<body id="top">
+
+<!-- HEADER -->
+<header class="header" data-header>
+  <div class="container">
+    <div class="overlay" data-overlay></div>
+
+    <a href="index.html" aria-label="Ir al inicio">
+      <h1 class="logo">Levantiq</h1>
+    </a>
+
+    <nav class="navbar" data-navbar>
+      <div class="navbar-top">
+        <a href="index.html" class="logo">Levantiq</a>
+        <button class="nav-close-btn" aria-label="Cerrar menú" data-nav-close-btn>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+
+      <ul class="navbar-list">
+        <li class="navbar-item"><a href="index.html#home" class="navbar-link" data-navbar-link>Inicio</a></li>
+        <li class="navbar-item"><a href="index.html#about" class="navbar-link" data-navbar-link>Sobre nosotros</a></li>
+
+        <li class="navbar-item has-dropdown">
+          <button class="navbar-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Servicios
+            <ion-icon name="chevron-down-outline" class="chev" aria-hidden="true"></ion-icon>
+          </button>
+          <ul class="dropdown">
+            <li><a href="marketing.html"  class="dropdown-link" data-navbar-link>Marketing Digital</a></li>
+            <li><a href="desarrollo.html" class="dropdown-link" data-navbar-link>Desarrollo Web</a></li>
+            <li><a href="ia.html"         class="dropdown-link" data-navbar-link>IA</a></li>
+          </ul>
+        </li>
+
+        <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
+        <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
+      </ul>
+    </nav>
+
+    <a href="contacto.html#agenda" class="btn-cta"><span>Contáctanos</span></a>
+
+    <button class="nav-open-btn" aria-label="Abrir menú" data-nav-open-btn>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+  </div>
+</header>
+
+<main>
+  <article>
+
+    <!-- HERO -->
+    <section class="hero" style="padding-block-start:140px">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-subtitle">IA · Automatización</p>
+          <h1 class="h2 hero-title">Asistente personal que libera tu tiempo</h1>
+          <p class="hero-text">
+            Agenda, correos, recordatorios y seguimiento de tareas en piloto automático. 
+            Tu “copilot” se adapta a tu rutina y ejecuta por ti, con control y trazabilidad.
+          </p>
+          <a class="btn" href="contacto.html?service=ia-asistente"><span>Probar una demo</span></a>
+        </div>
+
+        <figure class="hero-banner">
+          <img class="w-100 banner-animation"
+               src="./assets/images/ChatGPT%20Image%2017%20sept%202025,%2012_19_46-IA-Robot-Mujer.png"
+               width="694" height="529" loading="lazy" alt="Asistente personal con IA gestionando tareas"/>
+        </figure>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS RÁPIDOS -->
+    <section class="section about" id="beneficios-asistente">
+      <div class="container">
+        <figure class="about-banner">
+          <img class="w-100 banner-animation"
+               src="./assets/images/ChatGPT Image 17 sept 2025, 12_20_48.-IA-MujerFotoPrincipal.png"
+               width="700" height="532" loading="lazy" alt="Automatización de tareas personales"/>
+        </figure>
+
+        <div class="about-content">
+          <h2 class="h2 section-title underline">Más foco, menos interrupciones</h2>
+          <p class="about-text">
+            Eliminamos tareas repetitivas y organizamos tu semana: bloques de foco, bandeja controlada, avisos a tiempo
+            y documentación ordenada. Decide qué se automatiza y qué no, con preferencia de tono y horarios.
+          </p>
+
+          <ul class="stats-list">
+            <li class="stats-card">
+              <p class="h3 stats-title">+90 min</p>
+              <p class="stats-text">de foco al día</p>
+            </li>
+            <li class="stats-card">
+              <p class="h3 stats-title">-60%</p>
+              <p class="stats-text">tiempo en emails</p>
+            </li>
+            <li class="stats-card">
+              <p class="h3 stats-title">24/7</p>
+              <p class="stats-text">recordatorios y seguimiento</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section how" id="como-funciona">
+  <div class="container">
+    <h2 class="h2 section-title underline" style="text-align:center">Cómo funciona</h2>
+
+    <div class="how-wrap">
+      <!-- IZQUIERDA: pasos en dos columnas -->
+      <ol class="how-steps">
+        <li class="how-step">
+          <div class="how-icon"><ion-icon name="flash-outline"></ion-icon></div>
+          <div class="how-content">
+            <h3 class="h3 title">1) Descubrimiento</h3>
+            <p class="text">Analizamos tu rutina y priorizamos 2 automatizaciones de alto impacto.</p>
+          </div>
+        </li>
+
+        <li class="how-step">
+          <div class="how-icon"><ion-icon name="link-outline"></ion-icon></div>
+          <div class="how-content">
+            <h3 class="h3 title">2) Conexiones seguras</h3>
+            <p class="text">Conectamos calendario, email y documentos con permisos mínimos necesarios.</p>
+          </div>
+        </li>
+
+        <li class="how-step">
+          <div class="how-icon"><ion-icon name="construct-outline"></ion-icon></div>
+          <div class="how-content">
+            <h3 class="h3 title">3) Entrenamiento</h3>
+            <p class="text">Plantillas, reglas y tono. El asistente aprende tus preferencias y atajos.</p>
+          </div>
+        </li>
+
+        <li class="how-step">
+          <div class="how-icon"><ion-icon name="rocket-outline"></ion-icon></div>
+          <div class="how-content">
+            <h3 class="h3 title">4) Lanzamiento & mejora</h3>
+            <p class="text">Seguimiento con métricas y ajustes finos para maximizar el ahorro de tiempo.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- DERECHA: imagen -->
+      <figure class="how-media">
+        <img
+          class="w-100 banner-animation"
+          src="./assets/images/ChatGPT Image 17 sept 2025, 13_06_08.png"
+          width="520" height="420" loading="lazy" alt="Flujos automatizados"/>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+    <!-- CAPACIDADES (rejilla de tarjetas) -->
+    <section class="section service" id="capacidades">
+      <div class="container">
+        <h2 class="h2 section-title underline">¿Qué hace por ti?</h2>
+
+        <ul class="service-list">
+          <li>
+            <div class="service-card">
+              <div class="card-icon"><ion-icon name="calendar-outline"></ion-icon></div>
+              <h3 class="h3 title">Calendario</h3>
+              <p class="text">Bloques de foco, invitaciones, recordatorios inteligentes y reprogramaciones.</p>
+            </div>
+          </li>
+          <li>
+            <div class="service-card">
+              <div class="card-icon"><ion-icon name="mail-outline"></ion-icon></div>
+              <h3 class="h3 title">Correo</h3>
+              <p class="text">Clasificación, respuestas rápidas, plantillas y bandeja “cero” diaria.</p>
+            </div>
+          </li>
+          <li>
+            <div class="service-card">
+              <div class="card-icon"><ion-icon name="folder-open-outline"></ion-icon></div>
+              <h3 class="h3 title">Documentos</h3>
+              <p class="text">Orden automático, nombres normalizados y resúmenes con enlaces clave.</p>
+            </div>
+          </li>
+          <li>
+            <div class="service-card">
+              <div class="card-icon"><ion-icon name="checkmark-done-outline"></ion-icon></div>
+              <h3 class="h3 title">Seguimientos</h3>
+              <p class="text">Tareas y follow-ups sin olvidar plazos. Avisos por canal preferido.</p>
+            </div>
+          </li>
+          <li>
+            <div class="service-card">
+              <div class="card-icon"><ion-icon name="sparkles-outline"></ion-icon></div>
+              <h3 class="h3 title">Plantillas</h3>
+              <p class="text">Mensajes y documentos listos en 1 clic, con tono y variables personalizadas.</p>
+            </div>
+          </li>
+          <li>
+            <div class="service-card">
+              <div class="card-icon"><ion-icon name="git-compare-outline"></ion-icon></div>
+              <h3 class="h3 title">Integraciones</h3>
+              <p class="text">Google/Outlook, Notion, Drive, Slack y CRM. Todo conectado.</p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- PRUEBA / CTA -->
+    <section class="section" id="cta-asistente">
+      <div class="container" style="text-align:center">
+        <h2 class="h2 section-title underline">Prueba de 14 días · Sin riesgo</h2>
+        <p class="text" style="max-width:720px;margin-inline:auto">
+          Configuramos 2 automatizaciones clave (p. ej., calendario + correos) y medimos el ahorro real.
+          Si encaja, lo ampliamos; si no, te quedas con la configuración base.
+        </p>
+        <br/>
+        <a class="btn" href="contacto.html?service=ia-asistente"><span>Quiero mi demo</span></a>
+      </div>
+    </section>
+
+    <!-- FAQ SENCILLA -->
+   <section class="section faq" id="faq">
+  <div class="container">
+    <h2 class="h2 section-title underline">Preguntas frecuentes</h2>
+
+    <div class="faq-grid">
+      <!-- FAQ 1 -->
+      <details class="faq-item">
+        <summary>
+          <span class="q">¿Necesito dar acceso completo a mis cuentas?</span>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="a">
+          Usamos el mínimo permiso necesario y puedes revocar accesos en cualquier momento.
+        </div>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details class="faq-item">
+        <summary>
+          <span class="q">¿Puedo elegir el tono de los mensajes?</span>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="a">
+          Sí. Configuramos tono (formal / cercano / técnico) y reglas de interrupciones por horario.
+        </div>
+      </details>
+
+      <!-- FAQ 3 -->
+      <details class="faq-item">
+        <summary>
+          <span class="q">¿Qué pasa si quiero pausar automatizaciones?</span>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="a">
+          Las puedes pausar con un clic desde tu panel. Todo queda trazado y auditable.
+        </div>
+      </details>
+
+      <!-- FAQ 4 -->
+      <details class="faq-item">
+        <summary>
+          <span class="q">¿Cómo protegéis mis datos?</span>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="a">
+          Principio de mínimo privilegio, cifrado en tránsito y en reposo, y cumplimiento RGPD.
+        </div>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="faq-item">
+        <summary>
+          <span class="q">¿Cuánto tardamos en ver resultados?</span>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="a">
+          En 1–2 semanas solemos tener 2 automatizaciones clave funcionando con métricas visibles.
+        </div>
+      </details>
+
+      <!-- FAQ 6 -->
+      <details class="faq-item">
+        <summary>
+          <span class="q">¿Se integra con mis herramientas actuales?</span>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="a">
+          Sí: Google/Outlook, Notion, Drive, Slack y CRM. Si falta alguna, evaluamos un conector.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+  </article>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top section">
+    <div class="container">
+
+      <div class="footer-brand">
+        <a href="#" class="logo">Levantiq</a>
+        <p class="text">
+          Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        </p>
+        <ul class="social-list">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        </ul>
+      </div>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Enlaces</p></li>
+        <li><a href="index.html" class="footer-link">Inicio</a></li>
+        <li><a href="#beneficios-asistente" class="footer-link">Beneficios</a></li>
+        <li><a href="#como-funciona" class="footer-link">Cómo funciona</a></li>
+        <li><a href="#capacidades" class="footer-link">Capacidades</a></li>
+        <li><a href="#faq" class="footer-link">FAQ</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Servicios</p></li>
+        <li><a href="marketing.html" class="footer-link">Marketing Digital</a></li>
+        <li><a href="desarrollo.html" class="footer-link">Desarrollo Web</a></li>
+        <li><a href="ia.html" class="footer-link">IA & Automatización</a></li>
+        <li><a href="index.html#features" class="footer-link">Cómo lo hacemos</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Otros</p></li>
+        <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+        <li><a href="#" class="footer-link">Política de privacidad</a></li>
+        <li><a href="#" class="footer-link">Términos y condiciones</a></li>
+        <li><a href="#" class="footer-link">Soporte</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Contacto</p></li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">+34 600 000 000</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">hola@levantiq.com</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
+          <address class="footer-item-link">Madrid, España</address>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="copyright">
+      &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
+<!-- GO TO TOP -->
+<a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
+  <ion-icon name="arrow-up-outline"></ion-icon>
+</a>
+
+<!-- scripts -->
+<script src="./assets/js/script.js"></script>
+
+<!-- ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

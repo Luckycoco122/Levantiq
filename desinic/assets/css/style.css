@@ -1315,3 +1315,141 @@ section[id],
 
 /* Pequeño margen superior en botones de cada card para que el CTA no quede pegado */
 .mt-16 { margin-top: 16px; }
+
+/* ===== FAQ horizontal (acordeón sin JS) ===== */
+.faq .section-title { margin-bottom: 20px; }
+
+.faq-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+@media (max-width: 992px){
+  .faq-grid{ grid-template-columns:1fr; }
+}
+
+.faq-item{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(20,20,43,.06);
+  overflow:hidden;
+  transition:box-shadow .2s ease, transform .2s ease;
+}
+.faq-item:hover{ transform:translateY(-1px); box-shadow:0 14px 36px rgba(20,20,43,.09); }
+
+/* Oculta el marcador por defecto de <details> */
+.faq-item summary::-webkit-details-marker { display:none; }
+.faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:22px 24px;
+  position:relative;
+}
+
+/* Pregunta */
+.faq-item .q{
+  font-weight:700;
+  font-size:1.525rem;          /* ~18px */
+  line-height:1.25;
+  color:#172554;               /* azul oscuro legible */
+}
+
+/* Botón + dentro del círculo con gradiente del sitio */
+.faq-item .toggle{
+  margin-left:auto;
+  flex:0 0 auto;
+  width:40px; height:40px; border-radius:999px;
+  background:var(--red-gradient, linear-gradient(135deg,#ff4b6e,#ff6b3d));
+  box-shadow:0 8px 20px rgba(255,75,110,.35);
+  position:relative;
+  transition:transform .2s ease;
+}
+.faq-item .toggle::before,
+.faq-item .toggle::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:18px; height:2px; background:#fff; border-radius:2px;
+  transform:translate(-50%,-50%);
+}
+.faq-item .toggle::after{             /* barra vertical para el + */
+  transform:translate(-50%,-50%) rotate(90deg);
+}
+
+/* Respuesta */
+.faq-item .a{
+  padding:0 24px 20px 24px;
+  color:#4b5563;                 /* gris legible */
+  border-top:1px solid rgba(0,0,0,.06);
+  animation:faq-reveal .2s ease;
+}
+@keyframes faq-reveal{
+  from{ opacity:0; transform:translateY(-4px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* Estado abierto: el + se convierte en – (quitamos la barra vertical) */
+.faq-item[open] .toggle::after{ opacity:0; }
+.faq-item[open] .toggle{ transform:rotate(0.0001deg); } /* activa el antialias en algunos navegadores */
+
+/* ===== Cómo funciona: 2 columnas (pasos a la izquierda, imagen a la derecha) ===== */
+.how-wrap{
+  display:grid;
+  grid-template-columns: minmax(480px, 1.2fr) minmax(320px, .8fr);
+  gap: 40px 56px;
+  align-items:center;
+  margin-top: 14px;
+}
+
+.how-steps{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr)); /* 2 columnas para los 4 pasos */
+  gap: 22px;
+  list-style:none;
+  margin:0; padding:0;
+}
+
+.how-step{
+  display:flex;
+  gap:14px;
+  background:#fff;
+  border-radius:16px;
+  padding:18px 20px;
+  box-shadow: 0 12px 28px rgba(19,16,34,.08);
+}
+
+.how-icon{
+  flex:0 0 64px;
+  width:64px; height:64px;
+  border-radius:999px;
+  display:grid; place-items:center;
+  color:#fff;
+  background: radial-gradient(120% 120% at 30% 30%, #8378eb 0%, #8364f1 60%, #3a2c76 100%);
+  box-shadow: 0 10px 24px rgba(67,40,161,.28), inset 0 0 10px rgba(255,255,255,.08);
+}
+.how-icon ion-icon{ font-size:24px; }
+
+.how-content .title{ margin:2px 0 6px; }
+.how-content .text{ margin:0; }
+
+/* Imagen derecha */
+.how-media{ margin:0; display:flex; align-items:center; justify-content:center; }
+.how-media img{ max-width:100%; height:auto; filter: drop-shadow(0 14px 28px rgba(19,16,34,.12)); border-radius:12px; }
+
+/* Responsivo */
+@media (max-width: 1100px){
+  .how-wrap{
+    grid-template-columns: 1fr;         /* apilar */
+    gap: 26px;
+  }
+  .how-steps{
+    grid-template-columns: 1fr;         /* pasos en 1 columna */
+    gap: 16px;
+  }
+  .how-media{ order: 2; }               /* la imagen queda debajo */
+}
+@media (max-width: 560px){
+  .how-step{ padding:16px; }
+  .how-icon{ width:56px; height:56px; }
+}
