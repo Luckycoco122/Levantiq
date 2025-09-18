@@ -1,5 +1,8 @@
 'use strict';
 
+/* =========================
+   Utilidades y navegación
+   ========================= */
 (function () {
   const qs  = s => document.querySelector(s);
   const qsa = s => Array.from(document.querySelectorAll(s));
@@ -47,20 +50,20 @@
     window.scrollTo({ top: y, behavior: 'smooth' });
   });
 
-  // ===== CONTACTO: validación y envío AJAX (se ejecuta solo si hay formulario)
+  // ===== CONTACTO: validación y envío AJAX (si hay formulario)
   const form    = qs('#contact-form');
   const rgpd    = qs('#rgpd');
   const sendBtn = qs('#sendBtn');
   const fb      = qs('#contact-feedback');
 
-  // --- NUEVO: detectar ?service= de la URL y pre-rellenar campos ---
+  // --- Detectar ?service= de la URL y pre-rellenar campos ---
   const serviceFromQuery = new URLSearchParams(location.search).get('service') || '';
   const serviceField = qs('#serviceField'); // hidden opcional
   const messageEl = qs('#message');
 
   if (serviceField && !serviceField.value) serviceField.value = serviceFromQuery;
 
-  // Prefijo suave en el mensaje si hay service en la URL y el textarea está vacío
+  // Prefijo en el mensaje si hay service en la URL y el textarea está vacío
   if (serviceFromQuery && messageEl && !messageEl.value.trim()) {
     messageEl.value = `[Interés: ${serviceFromQuery}] `;
   }
@@ -102,8 +105,8 @@
       phone:   (data.get('phone')   || '').toString().trim(),
       company: (data.get('company') || '').toString().trim(),
       message: (data.get('message') || '').toString().trim(),
-      service: serviceValue || '',  // <-- NUEVO en payload
-      source:  'levantiq-contacto'  // etiqueta fuente de este formulario
+      service: serviceValue || '',
+      source:  'levantiq-contacto'
     };
 
     try {
@@ -120,13 +123,13 @@
       }
       form.reset(); toggleBtn();
 
-      // si añadiste autofill del mensaje, vuelve a dejar el prefijo si hay ?service
+      // repón prefijo si hay ?service
       if (serviceFromQuery && messageEl) {
         messageEl.value = `[Interés: ${serviceFromQuery}] `;
       }
       if (serviceField) serviceField.value = serviceFromQuery;
 
-      // Evento opcional a GA4 si existe gtag()
+      // Evento opcional a GA4
       if (typeof gtag === 'function') {
         gtag('event', 'lead_submit', { form: form.id || 'contacto', service: serviceValue || '(none)' });
       }
@@ -137,10 +140,11 @@
       }
     }
   });
-
 })();
 
-/* --- Dropdown Servicios --- */
+/* =========================
+   Dropdown Servicios
+   ========================= */
 (function () {
   const toggles = document.querySelectorAll('.navbar .dropdown-toggle');
 
@@ -169,132 +173,188 @@
     .forEach(a => a.addEventListener('click', () => closeAll()));
 })();
 
-/* ===== Carrusel IA: auto-scroll infinito (solo pausa con flechas) ===== */
+/* ===== Carruseles: auto-scroll infinito + flechas + centrado + Vista GRID ===== */
 (function () {
-  const root = document.querySelector('#ia-carousel');
-  if (!root) return;
+  const roots = document.querySelectorAll('.carousel');
+  if (!roots.length) return;
 
-  const track   = root.querySelector('.carousel-track');
-  const originals = [...root.querySelectorAll('.carousel-slide')]; // set original
-  const prevBtn = root.querySelector('.carousel-btn.prev');
-  const nextBtn = root.querySelector('.carousel-btn.next');
+  roots.forEach((root) => {
+    const track     = root.querySelector('.carousel-track');
+    const originals = Array.from(root.querySelectorAll('.carousel-slide'));
+    const prevBtn   = root.querySelector('.carousel-btn.prev');
+    const nextBtn   = root.querySelector('.carousel-btn.next');
+    if (!track || originals.length === 0) return;
 
-  // Asegura que el scroll programático no sea "suave"
-  track.style.scrollBehavior = 'auto';
-  track.style.webkitOverflowScrolling = 'auto';
-  track.style.overflowX = 'scroll';
+    // ====== Botón toggle (si existe en la sección) ======
+    // Busca el botón más cercano dentro del mismo container
+    const container = root.closest('.container');
+    const toggleBtn = container ? container.querySelector('[data-view-toggle]') : null;
 
-  // --- Clonado para bucle infinito ---
-  function cloneUntilWideEnough() {
-    if (track.dataset.cloned === '1') return;
-    const visible = track.clientWidth || root.clientWidth || 0;
+    // Ajustes base
+    track.style.scrollBehavior = 'auto';
+    track.style.webkitOverflowScrolling = 'auto';
+    track.style.overflowX = 'scroll';
 
-    let currentWidth = track.scrollWidth;
-    // Clona el set original hasta tener ~2x el ancho visible
-    while (currentWidth < visible * 2 + 200) {
-      originals.forEach(s => {
-        const c = s.cloneNode(true);
-        c.setAttribute('aria-hidden', 'true');
-        track.appendChild(c);
-      });
-      currentWidth = track.scrollWidth;
+    const GAP = parseFloat(getComputedStyle(track).gap || '24') || 24;
+
+    // ---------- Clonado (cinta) ----------
+    function cloneUntilWideEnough() {
+      if (track.dataset.cloned === '1') return;
+      const visible = track.clientWidth || root.clientWidth || 0;
+      let currentWidth = track.scrollWidth;
+      while (currentWidth < visible * 3 + 400) {
+        originals.forEach(slide => {
+          const c = slide.cloneNode(true);
+          c.setAttribute('aria-hidden', 'true');
+          track.appendChild(c);
+        });
+        currentWidth = track.scrollWidth;
+      }
+      track.dataset.cloned = '1';
     }
-    track.dataset.cloned = '1';
-  }
 
-  // --- Motor de scroll continuo ---
-  let speed = 1.0;    // px/frame  (sube temporalmente si quieres ver el movimiento más claro)
-  let rafId = null;
-  let paused = false;
-  let loopWidth = 0;
+    // ---------- Periodo real ----------
+    let period = 0;
+    function measurePeriod() {
+      const first = originals[0];
+      const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+      let firstClone = null;
+      for (let i = 1; i < slides.length; i++) {
+        if (slides[i].getAttribute('aria-hidden') === 'true') { firstClone = slides[i]; break; }
+      }
+      if (first && firstClone) period = Math.max(0, firstClone.offsetLeft - first.offsetLeft);
 
-  function computeLoopWidth() {
-    // ancho del set ORIGINAL (sin clones) + gaps
-    let w = 0;
-    originals.forEach(sl => { w += sl.getBoundingClientRect().width; });
-    const GAP = 24; // tu gap del CSS
-    w += GAP * Math.max(0, originals.length - 1);
-    loopWidth = Math.max(0, Math.round(w));
-  }
-
-  function tick() {
-    if (!paused && loopWidth > 0) {
-      track.scrollLeft += speed;
-      // envolver cuando pasamos del set original
-      if (track.scrollLeft >= loopWidth) {
-        track.scrollLeft -= loopWidth;
+      if (!period) {
+        period = originals.reduce((acc, sl, i) => {
+          const w = sl.getBoundingClientRect().width;
+          return acc + w + (i < originals.length - 1 ? GAP : 0);
+        }, 0);
       }
     }
-    rafId = requestAnimationFrame(tick);
-  }
 
-  function start() { if (!rafId) rafId = requestAnimationFrame(tick); }
-  function stop()  { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+    // ---------- Utilidades ----------
+    const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
+    const clampToMax = x => Math.min(Math.max(0, x), maxScroll());
+    function wrapByPeriod(x) {
+      const stride = Math.max(1, Math.min(period || 1, Math.max(1, maxScroll())));
+      let v = ((x % stride) + stride) % stride;
+      return clampToMax(v);
+    }
 
-  // --- Solo pausa con flechas (reanuda a los 4s) ---
-  const RESUME_DELAY = 4000;
-  let resumeTimer = null;
-  function pause() {
-    paused = true;
-    if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
-  }
-  function resumeAfter(delay = RESUME_DELAY) {
-    if (resumeTimer) clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(() => { paused = false; resumeTimer = null; }, delay);
-  }
-  function pauseFor(delay = RESUME_DELAY) { pause(); resumeAfter(delay); }
+    // ---------- Auto-scroll ----------
+    let speed  = 1.0;
+    let rafId  = null;
+    let paused = false;
 
-  function jump(delta) {
-    pauseFor(); // se detiene y reanudará a los 4s
-    track.scrollLeft += delta;
-    if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
-    if (track.scrollLeft < 0)         track.scrollLeft += loopWidth;
-  }
+    function tick() {
+      // En modo GRID, no autodesplazamos
+      if (!paused && period > 0 && !root.classList.contains('is-grid')) {
+        const next = track.scrollLeft + speed;
+        track.scrollLeft = wrapByPeriod(next);
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    function start() { if (!rafId) rafId = requestAnimationFrame(tick); }
+    function stop()  { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
 
-  prevBtn?.addEventListener('click', () => jump(-track.clientWidth * 0.9));
-  nextBtn?.addEventListener('click', () => jump( track.clientWidth * 0.9));
+    // ---------- Centrado por flechas ----------
+    const RESUME_DELAY = 4000;
+    let resumeTimer = null;
+    function pause() { paused = true; if (resumeTimer) clearTimeout(resumeTimer); }
+    function resumeAfter(d = RESUME_DELAY) {
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; resumeTimer = null; }, d);
+    }
 
-  // Nada de pausas por hover/scroll/focus: se queda moviéndose siempre.
-
-  // Recalcular en resize
-  let resizeT;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeT);
-    resizeT = setTimeout(() => {
-      stop();
-      track.scrollLeft = 0;
-      computeLoopWidth();
-      start();
-    }, 150);
-  }, { passive: true });
-
-  // Init robusto: espera a layout completo
-  function init() {
-    cloneUntilWideEnough();
-    computeLoopWidth();
-    if (!loopWidth || loopWidth < 10) {
-      // reintenta por si imágenes/fonts aún no midieron
-      requestAnimationFrame(() => {
-        computeLoopWidth();
-        start();
+    function centerTo(targetCenter) {
+      const slides = track.querySelectorAll('.carousel-slide');
+      let bestCenter = 0, bestDist = Infinity;
+      slides.forEach(sl => {
+        const c = sl.offsetLeft + sl.offsetWidth / 2;
+        const d = Math.abs(c - targetCenter);
+        if (d < bestDist) { bestDist = d; bestCenter = c; }
       });
-    } else {
+      const left = bestCenter - track.clientWidth / 2;
+      return wrapByPeriod(left);
+    }
+
+    function jumpBy(direction) {
+      if (!period || root.classList.contains('is-grid')) return; // sin saltos en grid
+      pause();
+      const cardW = originals[0].getBoundingClientRect().width || (track.clientWidth * 0.9);
+      const approxStep = cardW + GAP;
+      const currentCenter = track.scrollLeft + track.clientWidth / 2;
+      const targetCenter  = currentCenter + direction * approxStep;
+      const left = centerTo(targetCenter);
+      // Si prefieres animación: track.scrollTo({ left, behavior: 'smooth' });
+      track.scrollLeft = left;
+      resumeAfter();
+    }
+
+    prevBtn?.addEventListener('click', () => jumpBy(-1));
+    nextBtn?.addEventListener('click', () => jumpBy(+1));
+
+    // ---------- Toggle GRID / CARRUSEL ----------
+    function setGridMode(on) {
+      root.classList.add('switching');         // animación (fade/zoom)
+      // En modo grid, pausamos
+      if (on) paused = true;
+
+      // Cambia clase
+      root.classList.toggle('is-grid', on);
+
+      // Si volvemos al carrusel, recalcula y reanuda
+      if (!on) {
+        // Recalcula porque el layout cambió
+        track.scrollLeft = 0;
+        measurePeriod();
+        paused = false;
+      }
+
+      // Cambia icono / aria-pressed
+      if (toggleBtn) {
+        toggleBtn.setAttribute('aria-pressed', String(on));
+        const icon = toggleBtn.querySelector('ion-icon');
+        if (icon) icon.setAttribute('name', on ? 'albums-outline' : 'grid-outline');
+        toggleBtn.title = on ? 'Volver al carrusel' : 'Ver todos';
+      }
+
+      // Quita clase de transición tras el frame
+      setTimeout(() => root.classList.remove('switching'), 300);
+    }
+
+    toggleBtn?.addEventListener('click', () => {
+      const toGrid = !root.classList.contains('is-grid');
+      setGridMode(toGrid);
+    });
+
+    // ---------- Resize ----------
+    let rT;
+    window.addEventListener('resize', () => {
+      clearTimeout(rT);
+      rT = setTimeout(() => {
+        stop();
+        track.scrollLeft = 0;
+        measurePeriod();
+        start();
+      }, 150);
+    }, { passive: true });
+
+    // ---------- Init ----------
+    function init() {
+      cloneUntilWideEnough();
+      measurePeriod();
       start();
     }
-  }
-
-  if (document.readyState === 'complete') {
-    init();
-  } else {
-    window.addEventListener('load', init);
-  }
+    if (document.readyState === 'complete') init();
+    else window.addEventListener('load', init);
+  });
 })();
 
 
-
-
-
-/* ===== Contadores "Qué cambia con IA" ===== */
+/* =========================
+   Contadores ("Qué cambia con IA")
+   ========================= */
 (function () {
   const counters = document.querySelectorAll('.counter');
   if (!counters.length) return;

@@ -5,42 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marketing Digital — Levantiq</title>
+
+  <!-- favicon -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+
+  <!-- css -->
   <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body id="top">
 
-  <!-- Header -->
-  <!-- #HEADER -->
+<!-- #HEADER -->
 <header class="header" data-header>
   <div class="container">
 
     <div class="overlay" data-overlay></div>
 
-    <!-- Logo → a la Home -->
-    <a href="index.html">
-      <h1 class="logo">Levantiq</h1>
-    </a>
+    <a href="index.html"><h1 class="logo">Levantiq</h1></a>
 
     <nav class="navbar" data-navbar>
-
       <div class="navbar-top">
         <a href="index.html" class="logo">Levantiq</a>
-
         <button class="nav-close-btn" aria-label="Cerrar menú" data-nav-close-btn>
           <ion-icon name="close-outline"></ion-icon>
         </button>
       </div>
 
       <ul class="navbar-list">
-        <!-- Anclas internas de la home -->
         <li class="navbar-item"><a href="index.html#home" class="navbar-link" data-navbar-link>Inicio</a></li>
         <li class="navbar-item"><a href="index.html#about" class="navbar-link" data-navbar-link>Sobre nosotros</a></li>
 
-        <!-- Servicios con desplegable -->
         <li class="navbar-item has-dropdown">
           <button class="navbar-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
             Servicios
@@ -55,16 +53,10 @@
 
         <li class="navbar-item"><a href="index.html#features" class="navbar-link" data-navbar-link>Características</a></li>
         <li class="navbar-item"><a href="index.html#blog" class="navbar-link" data-navbar-link>Blog</a></li>
-
-        <!-- Contacto → página aparte -->
-     </ul>
-
+      </ul>
     </nav>
 
-    <!-- Botón header → va a la agenda en la página de contacto -->
-    <a href="contacto.html#agenda" class="btn-cta">
-      <span>Contáctanos</span>
-    </a>
+    <a href="contacto.html#agenda" class="btn-cta"><span>Contáctanos</span></a>
 
     <button class="nav-open-btn" aria-label="Abrir menú" data-nav-open-btn>
       <ion-icon name="menu-outline"></ion-icon>
@@ -73,141 +65,379 @@
   </div>
 </header>
 
-  <main>
-    <article>
+<main>
+  <article>
 
-      <!-- Hero -->
-      <section class="hero" style="padding-block-start:140px">
-        <div class="container">
-          <div class="hero-content">
-            <p class="hero-subtitle">Servicios</p>
-            <h1 class="h2 hero-title">Marketing Digital</h1>
-            <p class="hero-text">Te encuentran, te contactan y convierten: enfoque práctico para PYMES con resultados medibles.</p>
-            <a class="btn" href="contacto.html?service=marketing-digital">Pedir propuesta</a>
-          </div>
-          <figure class="hero-banner">
-            <img class="w-100 banner-animation" src="./assets/images/hero-banner.png" width="694" height="529" alt="Marketing digital">
-          </figure>
-        </div>
-      </section>
-
-      <!-- Subservicios -->
-      <section class="section">
-        <div class="container">
-          <h2 class="h2 section-title underline">Qué hacemos</h2>
-
-          <div class="subgrid">
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="location-outline"></ion-icon> SEO Local & On-Page</h4>
-              <p class="subtext">Google Business Profile, citaciones básicas y páginas de servicio optimizadas para aparecer en tu ciudad.</p>
-              <a class="cta-link" href="contacto.html?service=seo-local">Desde 499€ <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="flash-outline"></ion-icon> Lead Gen Starter (Ads)</h4>
-              <p class="subtext">Campañas sencillas orientadas a contacto: 1–2 campañas, landing y tracking listo para medir.</p>
-              <a class="cta-link" href="contacto.html?service=ads-starter">Pide presupuesto <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="mail-outline"></ion-icon> Email marketing</h4>
-              <p class="subtext">Listas, plantillas y automatizaciones de bienvenida/nurture para acompañar al lead hasta la venta.</p>
-              <a class="cta-link" href="contacto.html?service=email-marketing">Pide presupuesto <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-
-            <div class="sub-card">
-              <h4 class="subtitle"><ion-icon name="options-outline"></ion-icon> CRO/UX básico</h4>
-              <p class="subtext">Pequeñas mejoras de copy, formularios y jerarquía visual que suben la conversión en landings.</p>
-              <a class="cta-link" href="contacto.html?service=cro-basico">Pide presupuesto <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </article>
-  </main>
-
-  <!-- Footer (igual que el de index) -->
- <!-- #FOOTER -->
-  <footer class="footer">
-
-    <div class="footer-top section">
+    <!-- HERO -->
+    <section class="hero" style="padding-block-start:140px">
       <div class="container">
 
-        <div class="footer-brand">
-          <a href="#" class="logo">Levantiq</a>
-          <p class="text">
-            Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        <div class="hero-content">
+          <p class="hero-subtitle">Servicios</p>
+          <h1 class="h2 hero-title">Marketing Digital</h1>
+          <p class="hero-text">
+            Te encuentran, te recuerdan y te eligen. Unimos consultoría de negocio con ejecución en canales
+            para generar demanda, captar leads y convertirlos en clientes.
           </p>
 
-          <ul class="social-list">
-            <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <a class="btn" href="contacto.html?service=marketing-digital">
+            <span>Quiero atraer clientes</span>
+          </a>
+        </div>
+
+        <figure class="hero-banner">
+          <img class="w-100 banner-animation"
+               src="./assets/images/ChatGPT-Marketing1.png"
+               width="694" height="529" loading="lazy"
+               alt="Ilustración de marketing digital y estrategia">
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about-mkt">
+      <div class="container">
+
+        <figure class="about-banner">
+          <img class="w-100 banner-animation"
+               src="./assets/images/ChatGPT-Marketing2.png"
+               width="700" height="532" loading="lazy"
+               alt="Equipo de marketing trabajando">
+        </figure>
+
+        <div class="about-content">
+          <h2 class="h2 section-title underline">Consultoría de negocio + Marketing</h2>
+
+          <p class="about-text">
+            Empezamos comprendiendo tu negocio (objetivos, márgenes, estacionalidad) y mapeamos el embudo completo.
+            A partir de ahí trazamos un plan de 90 días y montamos un <em>dashboard</em> para medir el progreso en tiempo real.
+          </p>
+
+          <ul class="stats-list">
+            <li class="stats-card"><p class="h3 stats-title">KPIs</p><p class="stats-text">Objetivos claros</p></li>
+            <li class="stats-card"><p class="h3 stats-title">90d</p><p class="stats-text">Plan de acción</p></li>
+            <li class="stats-card"><p class="h3 stats-title">Data</p><p class="stats-text">Dashboard ad-hoc</p></li>
           </ul>
         </div>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Enlaces</p></li>
-          <li><a href="#" class="footer-link">Inicio</a></li>
-          <li><a href="#about" class="footer-link">Sobre nosotros</a></li>
-          <li><a href="#services" class="footer-link">Servicios</a></li>
-          <li><a href="#blog" class="footer-link">Blog</a></li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Servicios</p></li>
-          <li><a href="#services" class="footer-link">Estrategia & Analítica</a></li>
-          <li><a href="#services" class="footer-link">Desarrollo Web</a></li>
-          <li><a href="#services" class="footer-link">Integraciones & Automatización</a></li>
-          <li><a href="#features" class="footer-link">Cómo lo hacemos</a></li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Otros</p></li>
-          <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
-          <li><a href="#" class="footer-link">Política de privacidad</a></li>
-          <li><a href="#" class="footer-link">Términos y condiciones</a></li>
-          <li><a href="#" class="footer-link">Soporte</a></li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Contacto</p></li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
-            <div>
-              <a href="#" class="footer-item-link">+34 600 000 000</a>
-            </div>
-          </li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
-            <div>
-              <a href="#" class="footer-item-link">hola@levantiq.com</a>
-            </div>
-          </li>
-          <li class="footer-item">
-            <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
-            <address class="footer-item-link">Madrid, España</address>
-          </li>
-        </ul>
-
       </div>
+    </section>
+
+    <!-- SERVICIOS (carrusel con toggle a GRID) -->
+    <section class="section service" id="servicios-mkt">
+      <div class="container">
+
+        <div class="section-head">
+          <h2 class="h2 section-title underline">Qué hacemos</h2>
+
+          
+        </div>
+
+        <div id="mkt-carousel" class="carousel" aria-roledescription="carrusel">
+          <button class="carousel-btn prev" aria-label="Anterior">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+
+          <ul class="carousel-track service-list" role="listbox" aria-live="polite">
+            <li class="carousel-slide" role="option" aria-label="Social Ads">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="megaphone-outline"></ion-icon></div>
+                <h3 class="h3 title">Social Ads</h3>
+                <p class="text">Facebook, Instagram y TikTok: campañas de captación y remarketing con creatividades que paran el scroll.</p>
+                <a class="btn mt-16" href="contacto.html?service=social-ads">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="SEM (Google & YouTube)">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="search-outline"></ion-icon></div>
+                <h3 class="h3 title">SEM (Google & YouTube)</h3>
+                <p class="text">Búsqueda, Display y Vídeo con <em>keyword research</em>, estructura escalable y optimización continua.</p>
+                <a class="btn mt-16" href="contacto.html?service=sem">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="Email & Automatizaciones">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="mail-outline"></ion-icon></div>
+                <h3 class="h3 title">Email & Automatizaciones</h3>
+                <p class="text">Flujos de bienvenida y <em>nurture</em>, campañas y disparadores que acompañan al lead hasta la venta.</p>
+                <a class="btn mt-16" href="contacto.html?service=email-automation">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="Funnel de ventas">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="funnel-outline"></ion-icon></div>
+                <h3 class="h3 title">Funnel de ventas</h3>
+                <p class="text">Diseño de embudos y landings de alta conversión con seguimiento de eventos y audiencias.</p>
+                <a class="btn mt-16" href="contacto.html?service=funnel">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="SEO on-page & Contenidos">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="trending-up-outline"></ion-icon></div>
+                <h3 class="h3 title">SEO on-page & Contenidos</h3>
+                <p class="text">Arquitectura, copy y datos estructurados para que te encuentren en tu zona y en tu sector.</p>
+                <a class="btn mt-16" href="contacto.html?service=seo-onpage">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="Analítica & Dashboards">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="analytics-outline"></ion-icon></div>
+                <h3 class="h3 title">Analítica & Dashboards</h3>
+                <p class="text">GA4, Tag Manager y Looker Studio con métricas accionables por canal y etapa del embudo.</p>
+                <a class="btn mt-16" href="contacto.html?service=analitica">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="Creatividad">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="brush-outline"></ion-icon></div>
+                <h3 class="h3 title">Creatividad</h3>
+                <p class="text">Piezas gráficas y vídeo adaptadas a cada formato. Sistemas visuales consistentes en todo el funnel.</p>
+                <a class="btn mt-16" href="contacto.html?service=creatividad">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="CRO & UX">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="sparkles-outline"></ion-icon></div>
+                <h3 class="h3 title">CRO & UX</h3>
+                <p class="text">Tests A/B, mensajes claros y formularios sin fricción para mejorar la tasa de conversión.</p>
+                <a class="btn mt-16" href="contacto.html?service=cro">Más info</a>
+              </div>
+            </li>
+
+            <li class="carousel-slide" role="option" aria-label="Integraciones">
+              <div class="service-card">
+                <div class="card-icon"><ion-icon name="link-outline"></ion-icon></div>
+                <h3 class="h3 title">Integraciones</h3>
+                <p class="text">Conexión con CRM, ecommerce, web y asistentes de IA para cerrar el ciclo y no perder ningún lead.</p>
+                <a class="btn mt-16" href="contacto.html?service=integraciones-mkt">Más info</a>
+              </div>
+            </li>
+          </ul>
+
+          <button class="carousel-btn next" aria-label="Siguiente">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+
+          <!-- Botón para alternar carrusel / ver todos -->
+          <button class="view-toggle" data-view-toggle aria-pressed="false" title="Ver todos">
+            <ion-icon name="grid-outline" aria-hidden="true"></ion-icon>
+            <span class="sr-only">Cambiar vista</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO LO HACEMOS -->
+    <section class="section features" id="growth-system">
+      <div class="container">
+        <h2 class="h2 section-title underline">Nuestro método: Growth System</h2>
+
+        <ul class="features-list">
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="calendar-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Kick-off & Objetivos</h3>
+                <p class="text">Reunión de arranque, definición de KPIs y reparto de responsabilidades.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="analytics-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Analítica & Plan de Acción</h3>
+                <p class="text">Auditoría de canales, investigación y roadmap a 90 días priorizado por impacto.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <figure class="features-banner">
+          <img class="w-100 banner-animation"
+               src="./assets/images/ChatGPT-Marketing3.png"
+               width="369" height="318" loading="lazy"
+               alt="Plan de marketing y contenidos">
+        </figure>
+
+        <ul class="features-list">
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="construct-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Producción</h3>
+                <p class="text">Creatividades, landings, segmentaciones y medición listas para salir.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="features-card">
+              <div class="icon"><ion-icon name="rocket-outline"></ion-icon></div>
+              <div class="content">
+                <h3 class="h3 title">Lanzamiento & Optimización</h3>
+                <p class="text">Iteramos con datos: escalado, tests y aprendizaje continuo.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CASOS / SECTORES -->
+    <section class="section blog" id="casos">
+      <div class="container">
+        <h2 class="h2 section-title underline">Casos y sectores</h2>
+
+        <ul class="blog-list">
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <img class="img-cover" width="750" height="350" loading="lazy"
+                     src="./assets/images/ChatGPT-Marketing4.png"
+                     alt="Campañas de captación para clínicas">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Clínicas</a></h3>
+                <p class="text">Reservas sin fricción y campañas locales con seguimiento y recordatorios.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <img class="img-cover" width="750" height="350" loading="lazy"
+                     src="./assets/images/ChatGPT-Marketing5.png"
+                     alt="Ecommerce y social ads">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">E-commerce</a></h3>
+                <p class="text">Embudo completo: tráfico cualificado, remarketing y recuperación de carritos.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="banner">
+                <img class="img-cover" width="750" height="350" loading="lazy"
+                     src="./assets/images/ChatGPT-Marketing3.png"
+                     alt="Servicios profesionales y B2B">
+              </figure>
+              <div class="content">
+                <h3 class="h3 title"><a href="#">Servicios profesionales</a></h3>
+                <p class="text">Estrategia de contenidos y campañas de captación B2B con seguimiento en CRM.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="cta">
+      <div class="container" style="text-align:center">
+        <h2 class="h2 section-title underline">¿Lanzamos tu plan de crecimiento?</h2>
+        <p class="text" style="max-width:720px;margin-inline:auto">
+          Te presentamos un caso adaptado a tu sector y un plan de 90 días con acciones, métricas y responsables.
+        </p>
+        <br></br>
+        <a class="btn" href="contacto.html?service=marketing-digital">
+          <span>Hablemos</span>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</main>
+
+<!-- #FOOTER -->
+<footer class="footer">
+  <div class="footer-top section">
+    <div class="container">
+
+      <div class="footer-brand">
+        <a href="#" class="logo">Levantiq</a>
+        <p class="text">
+          Automatizamos procesos, integramos sistemas y construimos experiencias digitales que generan negocio.
+        </p>
+
+        <ul class="social-list">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        </ul>
+      </div>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Enlaces</p></li>
+        <li><a href="index.html" class="footer-link">Inicio</a></li>
+        <li><a href="#about-mkt" class="footer-link">Por qué marketing</a></li>
+        <li><a href="#servicios-mkt" class="footer-link">Servicios</a></li>
+        <li><a href="#growth-system" class="footer-link">Cómo lo hacemos</a></li>
+        <li><a href="#casos" class="footer-link">Casos</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Servicios</p></li>
+        <li><a href="marketing.html" class="footer-link">Marketing Digital</a></li>
+        <li><a href="desarrollo.html" class="footer-link">Desarrollo Web</a></li>
+        <li><a href="ia.html" class="footer-link">IA & Automatización</a></li>
+        <li><a href="index.html#features" class="footer-link">Cómo lo hacemos</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Otros</p></li>
+        <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+        <li><a href="#" class="footer-link">Política de privacidad</a></li>
+        <li><a href="#" class="footer-link">Términos y condiciones</a></li>
+        <li><a href="#" class="footer-link">Soporte</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">Contacto</p></li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="call"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">+34 600 000 000</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="mail"></ion-icon></div>
+          <div><a href="#" class="footer-item-link">hola@levantiq.com</a></div>
+        </li>
+        <li class="footer-item">
+          <div class="footer-item-icon"><ion-icon name="location"></ion-icon></div>
+          <address class="footer-item-link">Madrid, España</address>
+        </li>
+      </ul>
+
     </div>
+  </div>
 
-    <div class="footer-bottom">
-      <p class="copyright">
-        &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
-      </p>
-    </div>
+  <div class="footer-bottom">
+    <p class="copyright">
+      &copy; 2025 <a href="#" class="copyright-link">Levantiq</a>. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
 
-  </footer>
+<!-- #GO TO TOP -->
+<a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
+  <ion-icon name="arrow-up-outline"></ion-icon>
+</a>
 
-  <a href="#top" class="go-top active" aria-label="Volver arriba" data-go-top>
-    <ion-icon name="arrow-up-outline"></ion-icon>
-  </a>
+<!-- js -->
+<script src="./assets/js/script.js"></script>
 
-  <script src="./assets/js/script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

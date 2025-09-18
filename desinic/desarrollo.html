@@ -141,117 +141,139 @@
       </div>
     </section>
 
-    <!-- SERVICIOS (rejilla de cards siguiendo tu patrón) -->
-    <section class="section service" id="servicios-web">
-      <div class="container">
+  <!-- SERVICIOS (carrusel con misma estructura que ia.html) -->
+<section class="section service" id="servicios-web">
+  <div class="container">
+    <h2 class="h2 section-title underline">Servicios de desarrollo web</h2>
 
-        <h2 class="h2 section-title underline">Servicios de desarrollo web</h2>
+    <div id="dev-carousel" class="carousel" aria-roledescription="carrusel">
+      <button class="carousel-btn prev" aria-label="Anterior">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
 
-        <ul class="service-list">
+      <ul class="carousel-track service-list" role="listbox" aria-live="polite">
+        <!-- Slide 1 -->
+        <li class="carousel-slide" role="option" aria-label="Diseño & Desarrollo Web">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+            <h3 class="h3 title">Diseño & Desarrollo Web</h3>
+            <p class="text">
+              Webs a medida con arquitectura clara, contenido orientado a conversión y un CMS fácil de gestionar.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=diseno-desarrollo-web">Más info</a>
+          </div>
+        </li>
 
-          <!-- Diseño & Desarrollo Web -->
-          <li>
-            <a href="contacto.html?service=diseno-desarrollo-web" class="service-card" aria-label="Diseño y Desarrollo web">
-              <div class="card-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
-              <h3 class="h3 title">Diseño & Desarrollo Web</h3>
-              <p class="text">
-                Webs a medida con arquitectura clara, contenido orientado a conversión y un CMS fácil de gestionar.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 2 -->
+        <li class="carousel-slide" role="option" aria-label="Modernización & Replatforming">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="sync-outline"></ion-icon></div>
+            <h3 class="h3 title">Modernización & Replatforming</h3>
+            <p class="text">
+              Renovamos diseño, performance y tecnología. Migraciones seguras sin perder SEO ni datos.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=modernizacion-replatforming">Más info</a>
+          </div>
+        </li>
 
-          <!-- Modernización & Replatforming -->
-          <li>
-            <a href="contacto.html?service=modernizacion-replatforming" class="service-card" aria-label="Modernización y Replatforming">
-              <div class="card-icon"><ion-icon name="sync-outline"></ion-icon></div>
-              <h3 class="h3 title">Modernización & Replatforming</h3>
-              <p class="text">
-                Renovamos diseño, performance y tecnología. Migraciones seguras sin perder SEO ni datos.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 3 -->
+        <li class="carousel-slide" role="option" aria-label="E-commerce">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="cart-outline"></ion-icon></div>
+            <h3 class="h3 title">E-commerce</h3>
+            <p class="text">
+              Catálogos, pagos, envíos y automatizaciones. Carritos recuperados y fichas que convierten.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=ecommerce">Más info</a>
+          </div>
+        </li>
 
-          <!-- Ecommerce -->
-          <li>
-            <a href="contacto.html?service=ecommerce" class="service-card" aria-label="Ecommerce">
-              <div class="card-icon"><ion-icon name="cart-outline"></ion-icon></div>
-              <h3 class="h3 title">E-commerce</h3>
-              <p class="text">
-                Catálogos, pagos, envíos y automatizaciones. Carritos recuperados y fichas que convierten.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 4 -->
+        <li class="carousel-slide" role="option" aria-label="SEO técnico & Performance">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="speedometer-outline"></ion-icon></div>
+            <h3 class="h3 title">SEO técnico & Performance</h3>
+            <p class="text">
+              Core Web Vitals, indexación, datos estructurados y auditorías para que tu web sea rápida y visible.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=seo-tecnico-performance">Más info</a>
+          </div>
+        </li>
 
-          <!-- SEO técnico & Performance -->
-          <li>
-            <a href="contacto.html?service=seo-tecnico-performance" class="service-card" aria-label="SEO técnico y Performance">
-              <div class="card-icon"><ion-icon name="speedometer-outline"></ion-icon></div>
-              <h3 class="h3 title">SEO técnico & Performance</h3>
-              <p class="text">
-                Core Web Vitals, indexación, datos estructurados y auditorías para que tu web sea rápida y visible.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 5 -->
+        <li class="carousel-slide" role="option" aria-label="CRO & Analítica">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="analytics-outline"></ion-icon></div>
+            <h3 class="h3 title">CRO & Analítica</h3>
+            <p class="text">
+              Medición con GA4/Tag Manager, paneles y tests A/B para optimizar formularios, checkout y embudos.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=cro-analitica">Más info</a>
+          </div>
+        </li>
 
-          <!-- CRO & Analítica -->
-          <li>
-            <a href="contacto.html?service=cro-analitica" class="service-card" aria-label="CRO y Analítica">
-              <div class="card-icon"><ion-icon name="analytics-outline"></ion-icon></div>
-              <h3 class="h3 title">CRO & Analítica</h3>
-              <p class="text">
-                Medición con GA4/Tag Manager, paneles y tests A/B para optimizar formularios, checkout y embudos.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 6 -->
+        <li class="carousel-slide" role="option" aria-label="Integraciones & Automatización">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="link-outline"></ion-icon></div>
+            <h3 class="h3 title">Integraciones & Automatización</h3>
+            <p class="text">
+              Conectamos tu web con CRM, ERP, email marketing, pasarelas y asistentes de IA para ahorrar tiempo.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=integraciones-automatizacion">Más info</a>
+          </div>
+        </li>
 
-          <!-- Integraciones & Automatización -->
-          <li>
-            <a href="contacto.html?service=integraciones-automatizacion" class="service-card" aria-label="Integraciones y Automatización">
-              <div class="card-icon"><ion-icon name="link-outline"></ion-icon></div>
-              <h3 class="h3 title">Integraciones & Automatización</h3>
-              <p class="text">
-                Conectamos tu web con CRM, ERP, email marketing, pasarelas y asistentes de IA para ahorrar tiempo.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 7 -->
+        <li class="carousel-slide" role="option" aria-label="Branding & Creatividad">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="brush-outline"></ion-icon></div>
+            <h3 class="h3 title">Branding & Creatividad</h3>
+            <p class="text">
+              Identidad visual, sistema de componentes y diseño gráfico coherente en todos tus puntos de contacto.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=branding-creatividad">Más info</a>
+          </div>
+        </li>
 
-          <!-- Branding & Creatividad -->
-          <li>
-            <a href="contacto.html?service=branding-creatividad" class="service-card" aria-label="Branding y Creatividad">
-              <div class="card-icon"><ion-icon name="brush-outline"></ion-icon></div>
-              <h3 class="h3 title">Branding & Creatividad</h3>
-              <p class="text">
-                Identidad visual, sistema de componentes y diseño gráfico coherente en todos tus puntos de contacto.
-              </p>
-            </a>
-          </li>
+        <!-- Slide 8 -->
+        <li class="carousel-slide" role="option" aria-label="Contenido & Comunicación Web">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="create-outline"></ion-icon></div>
+            <h3 class="h3 title">Contenido & Comunicación Web</h3>
+            <p class="text">
+              UX writing, SEO on-page y páginas que explican beneficios con claridad (servicios, landing pages, blog).
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=contenido-comunicacion">Más info</a>
+          </div>
+        </li>
 
-          <!-- Contenido & Comunicación Web -->
-          <li>
-            <a href="contacto.html?service=contenido-comunicacion" class="service-card" aria-label="Contenido y Comunicación Web">
-              <div class="card-icon"><ion-icon name="create-outline"></ion-icon></div>
-              <h3 class="h3 title">Contenido & Comunicación Web</h3>
-              <p class="text">
-                UX writing, SEO on-page y páginas que explican beneficios con claridad (servicios, landing pages, blog).
-              </p>
-            </a>
-          </li>
+        <!-- Slide 9 -->
+        <li class="carousel-slide" role="option" aria-label="Mantenimiento & Soporte">
+          <div class="service-card">
+            <div class="card-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+            <h3 class="h3 title">Mantenimiento & Soporte</h3>
+            <p class="text">
+              Actualizaciones, backups, seguridad, monitorización y evolutivos para mantener tu web siempre a punto.
+            </p>
+            <a class="btn mt-16" href="contacto.html?service=mantenimiento-soporte">Más info</a>
+          </div>
+        </li>
+      </ul>
 
-          <!-- Mantenimiento & Soporte -->
-          <li>
-            <a href="contacto.html?service=mantenimiento-soporte" class="service-card" aria-label="Mantenimiento y soporte">
-              <div class="card-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
-              <h3 class="h3 title">Mantenimiento & Soporte</h3>
-              <p class="text">
-                Actualizaciones, backups, seguridad, monitorización y evolutivos para mantener tu web siempre a punto.
-              </p>
-            </a>
-          </li>
+      <button class="carousel-btn next" aria-label="Siguiente">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
 
-        </ul>
+      <!-- Botón alternar vista (rejilla/carrusel) — anclado abajo-derecha -->
+      <button class="view-toggle" type="button" aria-label="Cambiar a vista rejilla" data-view-toggle>
+        <ion-icon name="grid-outline" aria-hidden="true"></ion-icon>
+        <span class="sr-only">Cambiar vista</span>
+      </button>
+    </div>
+  </div>
+</section>
 
-      </div>
-    </section>
 
     <!-- CÓMO LO HACEMOS (mismo patrón de index) -->
     <section class="section features" id="features-web">

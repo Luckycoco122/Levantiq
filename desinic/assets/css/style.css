@@ -1241,64 +1241,77 @@ section[id],
   .navbar .has-dropdown.open > .dropdown { display: block; }
   .navbar .dropdown .dropdown-link { padding: 12px 0; }
 }
-/* ===== Carousel IA ===== */
-.carousel {
-  position: relative;
-  margin-top: 1.5rem;
-}
+/* ===== Carousel (override y consistencia) ===== */
+.carousel { position: relative; margin-top: 1.5rem; }
 .carousel-track {
-  display: flex;
-  gap: 24px;
-  overflow-x: scroll;
-  scroll-snap-type: none;
-  -webkit-overflow-scrolling: auto;
-  scroll-behavior: auto;
-  padding: 8px 4px;
-  scrollbar-width: none;           /* Firefox */
+  display: flex; gap: 24px; overflow-x: scroll;
+  -webkit-overflow-scrolling: auto; scroll-behavior: auto;
+  padding: 8px 4px; scrollbar-width: none;
 }
-.carousel-track::-webkit-scrollbar { display: none; } /* WebKit */
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel .carousel-slide { flex: 0 0 360px; max-width: 420px; scroll-snap-align: start; }
+@media (min-width: 992px) { .carousel .carousel-slide { flex-basis: 420px; } }
 
-.carousel-slide {
-  scroll-snap-align: start;
-  flex: 0 0 360px;                 /* ancho mínimo de cada card */
-  max-width: 420px;
-}
-@media (min-width: 992px) {
-  .carousel-slide { flex-basis: 420px; }
+/* Si tu tema hace .service-list {display:grid}, lo forzamos a flex aquí */
+.carousel .service-list.carousel-track {
+  display: flex !important; flex-wrap: nowrap !important; gap: 24px !important;
 }
 
-/* Reusa tu .service-card; aquí solo aseguramos altura y estética en carrusel */
-.carousel .service-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+.carousel .service-card { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
 
-/* Botones */
 .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
+  position: absolute; top: 50%; transform: translateY(-50%);
+  border: none; width: 44px; height: 44px; border-radius: 999px;
   background: var(--red-gradient, linear-gradient(135deg,#ff4b6e,#ff6b3d));
-  color: #fff;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 20px rgba(255, 75, 110, .35);
-  cursor: pointer;
-  z-index: 2;
+  color: #fff; display: grid; place-items: center;
+  box-shadow: 0 8px 20px rgba(255,75,110,.35); cursor: pointer; z-index: 2;
 }
-.carousel-btn.prev { left: -6px; }
-.carousel-btn.next { right: -6px; }
+.carousel-btn.prev { left: -6px; } .carousel-btn.next { right: -6px; }
+.carousel-btn:disabled { opacity: .4; cursor: default; }
 
-.carousel-btn:disabled {
-  opacity: .4;
-  cursor: default;
+/* Cabecera de sección con botón a la derecha */
+.section-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin-bottom: 12px;
 }
+
+/* Botón de alternar vista (rejilla/carrusel) */
+.view-toggle {
+  display: inline-grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 999px; border: 0;
+  background: var(--red-gradient, linear-gradient(135deg,#ff4b6e,#ff6b3d));
+  color: #fff; box-shadow: 0 8px 20px rgba(255,75,110,.35); cursor: pointer;
+}
+
+.carousel .view-toggle{ position:absolute; right:8px; bottom:-28px; z-index:4; }
+
+.view-toggle ion-icon { font-size: 22px; }
+
+/* Animación suave al cambiar de vista */
+.carousel .carousel-track { transition: opacity .28s ease, transform .28s ease; }
+.carousel.switching .carousel-track { opacity: 0; transform: scale(.98); }
+
+/* ===== Vista GRID ===== */
+.carousel.is-grid .carousel-btn { display: none !important; }   /* oculta flechas */
+.carousel.is-grid .carousel-track {
+  /* Rejilla fluida */
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px !important;
+  overflow: visible; padding: 8px 0;     /* sin barra de scroll horizontal */
+}
+.carousel.is-grid .carousel-slide {
+  /* Las cards dejan de tener ancho fijo de carrusel */
+  flex: initial !important; max-width: none !important; width: auto !important;
+  scroll-snap-align: unset;
+}
+
+/* Accesibilidad (solo texto oculto) */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 
 /* Pequeño margen superior en botones de cada card para que el CTA no quede pegado */
 .mt-16 { margin-top: 16px; }
