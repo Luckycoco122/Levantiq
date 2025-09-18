@@ -169,25 +169,30 @@
     .forEach(a => a.addEventListener('click', () => closeAll()));
 })();
 
-/* ===== Carrusel IA: movimiento continuo ===== */
+/* ===== Carrusel IA: auto-scroll infinito (solo pausa con flechas) ===== */
 (function () {
   const root = document.querySelector('#ia-carousel');
   if (!root) return;
 
   const track   = root.querySelector('.carousel-track');
-  const slides  = [...root.querySelectorAll('.carousel-slide')];
+  const originals = [...root.querySelectorAll('.carousel-slide')]; // set original
   const prevBtn = root.querySelector('.carousel-btn.prev');
   const nextBtn = root.querySelector('.carousel-btn.next');
 
+  // Asegura que el scroll programático no sea "suave"
+  track.style.scrollBehavior = 'auto';
+  track.style.webkitOverflowScrolling = 'auto';
+  track.style.overflowX = 'scroll';
+
   // --- Clonado para bucle infinito ---
   function cloneUntilWideEnough() {
-    const visible = track.clientWidth;
-    const hasClones = track.dataset.cloned === '1';
-    if (hasClones) return;
+    if (track.dataset.cloned === '1') return;
+    const visible = track.clientWidth || root.clientWidth || 0;
 
     let currentWidth = track.scrollWidth;
+    // Clona el set original hasta tener ~2x el ancho visible
     while (currentWidth < visible * 2 + 200) {
-      slides.forEach(s => {
+      originals.forEach(s => {
         const c = s.cloneNode(true);
         c.setAttribute('aria-hidden', 'true');
         track.appendChild(c);
@@ -198,24 +203,24 @@
   }
 
   // --- Motor de scroll continuo ---
-  let speed = 0.6; // píxeles por frame (≈36px/s a 60fps)
+  let speed = 1.0;    // px/frame  (sube temporalmente si quieres ver el movimiento más claro)
   let rafId = null;
   let paused = false;
   let loopWidth = 0;
 
   function computeLoopWidth() {
+    // ancho del set ORIGINAL (sin clones) + gaps
     let w = 0;
-    for (let i = 0; i < slides.length; i++) {
-      w += slides[i].getBoundingClientRect().width;
-    }
-    const GAP = 24;
-    w += GAP * (slides.length - 1);
-    loopWidth = Math.round(w);
+    originals.forEach(sl => { w += sl.getBoundingClientRect().width; });
+    const GAP = 24; // tu gap del CSS
+    w += GAP * Math.max(0, originals.length - 1);
+    loopWidth = Math.max(0, Math.round(w));
   }
 
   function tick() {
-    if (!paused) {
+    if (!paused && loopWidth > 0) {
       track.scrollLeft += speed;
+      // envolver cuando pasamos del set original
       if (track.scrollLeft >= loopWidth) {
         track.scrollLeft -= loopWidth;
       }
@@ -226,25 +231,32 @@
   function start() { if (!rafId) rafId = requestAnimationFrame(tick); }
   function stop()  { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
 
-  // Controles manuales
-  function jump(delta) {
+  // --- Solo pausa con flechas (reanuda a los 4s) ---
+  const RESUME_DELAY = 4000;
+  let resumeTimer = null;
+  function pause() {
     paused = true;
+    if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+  }
+  function resumeAfter(delay = RESUME_DELAY) {
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { paused = false; resumeTimer = null; }, delay);
+  }
+  function pauseFor(delay = RESUME_DELAY) { pause(); resumeAfter(delay); }
+
+  function jump(delta) {
+    pauseFor(); // se detiene y reanudará a los 4s
     track.scrollLeft += delta;
     if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
-    if (track.scrollLeft < 0) track.scrollLeft += loopWidth;
-    setTimeout(() => { paused = false; }, 200);
+    if (track.scrollLeft < 0)         track.scrollLeft += loopWidth;
   }
 
   prevBtn?.addEventListener('click', () => jump(-track.clientWidth * 0.9));
   nextBtn?.addEventListener('click', () => jump( track.clientWidth * 0.9));
 
-  root.addEventListener('mouseenter', () => paused = true);
-  root.addEventListener('mouseleave', () => paused = false);
-  root.addEventListener('pointerdown', () => paused = true);
-  root.addEventListener('pointerup',   () => paused = false);
-  root.addEventListener('focusin',     () => paused = true);
-  root.addEventListener('focusout',    () => paused = false);
+  // Nada de pausas por hover/scroll/focus: se queda moviéndose siempre.
 
+  // Recalcular en resize
   let resizeT;
   window.addEventListener('resize', () => {
     clearTimeout(resizeT);
@@ -256,13 +268,31 @@
     }, 150);
   }, { passive: true });
 
-  // Init
-  cloneUntilWideEnough();
-  computeLoopWidth();
-  start();
+  // Init robusto: espera a layout completo
+  function init() {
+    cloneUntilWideEnough();
+    computeLoopWidth();
+    if (!loopWidth || loopWidth < 10) {
+      // reintenta por si imágenes/fonts aún no midieron
+      requestAnimationFrame(() => {
+        computeLoopWidth();
+        start();
+      });
+    } else {
+      start();
+    }
+  }
 
-  // window.__iaCarouselSpeed = (v)=>{ speed = v; };
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', init);
+  }
 })();
+
+
+
+
 
 /* ===== Contadores "Qué cambia con IA" ===== */
 (function () {
